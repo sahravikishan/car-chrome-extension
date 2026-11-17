@@ -257,7 +257,7 @@
 
           return cachedEntry;
         } catch (err) {
-          console.warn(`[ImageOptimizer] Optimization failed for "${wallpaper.name}":`, err.message);
+          console.debug(`[ImageOptimizer] Optimization notice for "${wallpaper.name}":`, err.message);
           return null;
         } finally {
           this.inFlightOptimizations.delete(cacheKey);
@@ -314,7 +314,7 @@
             };
           }
         } catch (dbErr) {
-          console.warn('[ImageOptimizer] IndexedDB read error:', dbErr);
+          console.debug('[ImageOptimizer] IndexedDB read note:', dbErr);
         }
       }
 

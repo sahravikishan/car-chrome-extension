@@ -167,7 +167,7 @@
           try {
             state.speechRecognition.start();
           } catch (e) {
-            console.warn(e);
+            console.debug(e);
           }
         } else {
           stopListening();
@@ -600,7 +600,10 @@
 
     // Check if this wallpaper was deleted - never display a deleted wallpaper!
     if (state.deletedWallpaperIds && state.deletedWallpaperIds.has(wallpaper.id)) {
-      console.warn(`[Apex Cinema] Blocked attempt to display deleted wallpaper: ${wallpaper.id}`);
+      const nextValid = (state.currentList || []).find(w => !state.deletedWallpaperIds.has(w.id));
+      if (nextValid && nextValid.id !== wallpaper.id) {
+        renderWallpaper(nextValid, animate);
+      }
       return;
     }
 
@@ -622,7 +625,7 @@
           isPredecoded = !!opt.isPredecoded;
         }
       } catch (err) {
-        console.warn('[Apex Cinema] ImageOptimizer resolve warning:', err);
+        // Graceful fallback to raw URL without triggering Chrome extension error badge
       }
     }
 
@@ -637,11 +640,18 @@
         try {
           await decodeImg.decode();
         } catch (decodeErr) {
-          console.warn(`[Apex Cinema] Active image failed to decode or file missing: ${wallpaper.name} (${wallpaper.id})`);
-          // Never substitute or fall back to backups, old copies, or secondary paths!
-          // Remove active registry entry and safely purge invalid references
-          await deleteActiveWallpaper(wallpaper.id);
-          return;
+          // If user clicked Next / Prev while decoding, ignore abort silently
+          if (currentToken !== state.wallpaperLoadToken) return;
+
+          // If image failed to load because file is missing on disk:
+          if (decodeImg.naturalWidth === 0) {
+            await deleteActiveWallpaper(wallpaper.id);
+            const fallbackWp = (state.currentList || []).find(w => w.id !== wallpaper.id && (!state.deletedWallpaperIds || !state.deletedWallpaperIds.has(w.id)));
+            if (fallbackWp) {
+              renderWallpaper(fallbackWp, animate);
+            }
+            return;
+          }
         }
       }
     }
@@ -1826,7 +1836,7 @@
     try {
       state.userWallpapers = await window.wallpaperDB.getAllWallpapers();
     } catch (e) {
-      console.warn('IndexedDB initial load error:', e);
+      console.debug('IndexedDB initial load error:', e);
       state.userWallpapers = [];
     }
 

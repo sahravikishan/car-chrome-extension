@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Minimal Cinematic Stylesheet -->
   <link rel="stylesheet" href="css/cinematic.css">
+  <!-- Extension Favicon -->
+  <link rel="icon" type="image/png" href="assets/icons/icon48.png">
 </head>
 <body>
 
@@ -77,9 +79,12 @@
        ======================================================== -->
   <div id="view-hub-modal" class="cinema-view-overlay">
     <div class="overlay-header">
-      <div class="overlay-title-group">
-        <h2>Cinematic <span>Hub</span></h2>
-        <p>Manage car categories, wallpapers, uploads, favorites, and settings.</p>
+      <div class="overlay-title-group" style="display:flex; align-items:center; gap:16px;">
+        <img src="assets/icons/icon48.png" alt="Apex Cinema" style="width:42px; height:42px; border-radius:10px; border:1px solid rgba(212,175,55,0.4); box-shadow:0 4px 16px rgba(0,0,0,0.6);">
+        <div>
+          <h2>Cinematic <span>Hub</span></h2>
+          <p>Manage car categories, wallpapers, uploads, favorites, and settings.</p>
+        </div>
       </div>
       <button class="overlay-close-btn" id="btn-close-hub" title="Close"><i class="bi bi-x-lg"></i></button>
     </div>

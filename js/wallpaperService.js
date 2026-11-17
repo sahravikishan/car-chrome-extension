@@ -221,7 +221,7 @@
       // 2. Duplicate ID Check
       if (this._registry.has(id) && !overwrite) {
         const errorMsg = `[WallpaperService] Duplicate ID rejected: A wallpaper with id "${id}" already exists.`;
-        console.warn(errorMsg);
+        console.debug(errorMsg);
         return { success: false, error: errorMsg };
       }
 

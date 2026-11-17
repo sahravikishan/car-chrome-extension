@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121218"/>
+      <stop offset="100%" stop-color="#060608"/>
+    </linearGradient>
+    <linearGradient id="goldGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2A1"/>
+      <stop offset="30%" stop-color="#D4AF37"/>
+      <stop offset="70%" stop-color="#AA821C"/>
+      <stop offset="100%" stop-color="#F5D061"/>
+    </linearGradient>
+    <linearGradient id="glowGrad1" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF334B" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow1" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#D4AF37" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad1)"/>
+  <rect width="504" height="504" x="4" y="4" rx="124" fill="none" stroke="url(#goldGrad1)" stroke-width="3" stroke-opacity="0.35"/>
+
+  <!-- Cinema Viewfinder Frame Lines -->
+  <path d="M70 120 L70 70 L120 70 M392 70 L442 70 L442 120 M442 392 L442 442 L392 442 M120 442 L70 442 L70 392" 
+        stroke="url(#goldGrad1)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.4"/>
+
+  <!-- Ambient Shutter Circle Ring -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="url(#goldGrad1)" stroke-width="2" stroke-dasharray="6 8" opacity="0.25"/>
+
+  <!-- Aerodynamic Car Silhouette -->
+  <g filter="url(#shadow1)">
+    <!-- Roofline & Body Contour -->
+    <path d="M84 316 C120 316 150 286 195 240 C235 200 290 190 350 215 C400 235 430 280 440 295 L440 316 C415 316 400 296 380 296 C360 296 345 316 300 316 L220 316 C195 316 185 296 165 296 C145 296 130 316 84 316 Z" 
+          fill="url(#goldGrad1)"/>
+    
+    <!-- Cabin Window Cutout -->
+    <path d="M215 242 C245 212 285 206 335 224 C315 248 290 262 235 264 Z" 
+          fill="#060608" opacity="0.95"/>
+
+    <!-- Speed Streaks (Motion Wings) -->
+    <path d="M60 270 L170 270 M90 250 L200 250 M75 290 L140 290" 
+          stroke="url(#goldGrad1)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Headlight Beam (Left & Right) -->
+    <circle cx="434" cy="296" r="8" fill="#FFF8D6"/>
+    <polygon points="440,294 485,282 485,310 440,298" fill="url(#glowGrad1)" opacity="0.75"/>
+    
+    <!-- Taillight Accent -->
+    <path d="M96 308 L110 308" stroke="#FF334B" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Subtle Badge Text: APEX -->
+  <text x="256" y="386" font-family="'Syne', 'Inter', sans-serif" font-size="28" font-weight="800" letter-spacing="12" fill="url(#goldGrad1)" text-anchor="middle">APEX</text>
+  <text x="256" y="412" font-family="'Inter', sans-serif" font-size="13" font-weight="600" letter-spacing="8" fill="#FFFFFF" opacity="0.5" text-anchor="middle">CINEMA</text>
+</svg>

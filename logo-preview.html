@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Cinema — Extension Logo Concepts & Selection</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <style>
+    :root {
+      --cinema-gold: #d4af37;
+      --cinema-gold-glow: rgba(212, 175, 55, 0.35);
+      --cinema-black: #060608;
+      --cinema-dark: #0f0f14;
+      --cinema-card: rgba(18, 18, 26, 0.7);
+      --cinema-crimson: #ff334b;
+      --text-main: #ffffff;
+      --text-muted: #8e8e9f;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--cinema-black);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(255, 51, 75, 0.06) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 40px 24px 80px 24px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--cinema-gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #fff2a1 0%, #d4af37 60%, #997514 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Grid of 4 Concepts */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .concept-card {
+      background: var(--cinema-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .concept-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(212, 175, 55, 0.15);
+    }
+
+    .concept-card.selected {
+      border-color: var(--cinema-gold);
+      box-shadow: 0 0 0 2px var(--cinema-gold), 0 16px 40px rgba(0,0,0,0.6);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cinema-gold);
+      letter-spacing: 1px;
+    }
+
+    /* Main High-Res Logo View */
+    .logo-hero-box {
+      width: 100%;
+      aspect-ratio: 1;
+      max-height: 240px;
+      background: radial-gradient(circle at center, rgba(30, 30, 42, 0.6) 0%, rgba(10, 10, 14, 0.9) 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 16px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .logo-hero-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+      transition: transform 0.3s ease;
+    }
+
+    .concept-card:hover .logo-hero-box img {
+      transform: scale(1.05);
+    }
+
+    .concept-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .concept-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    /* Chrome Extension Real Sizes Simulation */
+    .size-test-container {
+      background: rgba(8, 8, 12, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 20px;
+    }
+
+    .size-test-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .size-previews-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 12px;
+      padding-top: 6px;
+    }
+
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .size-item .size-label {
+      font-size: 10px;
+      color: #71717a;
+      font-weight: 600;
+    }
+
+    .size-box-128 {
+      width: 56px;
+      height: 56px;
+    }
+
+    .size-box-48 {
+      width: 38px;
+      height: 38px;
+    }
+
+    .size-box-16 {
+      width: 20px;
+      height: 20px;
+    }
+
+    .size-box-128 img, .size-box-48 img, .size-box-16 img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Action Buttons */
+    .select-btn {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .select-btn:hover {
+      background: var(--cinema-gold);
+      border-color: var(--cinema-gold);
+      color: #000;
+      box-shadow: 0 4px 16px var(--cinema-gold-glow);
+    }
+
+    .concept-card.selected .select-btn {
+      background: var(--cinema-gold);
+      border-color: var(--cinema-gold);
+      color: #000;
+    }
+
+    /* Simulated Extension Browser Toolbar Header */
+    .browser-toolbar-simulation {
+      background: rgba(18, 18, 24, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .toolbar-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--cinema-gold);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mock-chrome-bar {
+      height: 48px;
+      background: #1e1e24;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 14px;
+    }
+
+    .mock-address-box {
+      flex: 1;
+      height: 32px;
+      background: #141418;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .mock-extensions-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mock-ext-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .mock-ext-icon img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    /* Toast */
+    #selection-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(20, 20, 28, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--cinema-gold);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--cinema-gold-glow);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99999;
+    }
+
+    #selection-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand-tag"><i class="bi bi-palette-fill"></i> Official Extension Branding</div>
+      <h1>Choose Your <span>Extension Logo</span></h1>
+      <p class="subtitle">
+        Review 4 bespoke logo concepts created for the <strong>Cinematic Car Wallpaper</strong> extension.
+        Switch between <strong>Vector SVG</strong> (clean & sharp at 16px) and <strong>3D Rendered Art</strong> (luxurious carbon & metallic lighting).
+      </p>
+
+      <!-- Style Switcher Tabs -->
+      <div style="display:flex; justify-content:center; gap:12px; margin-top:24px;">
+        <button id="btn-mode-svg" class="select-btn" style="width:auto; padding:8px 24px; background:var(--cinema-gold); color:#000;" onclick="switchStyleMode('svg')">
+          <i class="bi bi-vector-pen"></i> Vector SVG Mode (Recommended for Icons)
+        </button>
+        <button id="btn-mode-3d" class="select-btn" style="width:auto; padding:8px 24px; background:rgba(255,255,255,0.06); color:#fff;" onclick="switchStyleMode('3d')">
+          <i class="bi bi-box"></i> 3D Rendered Art Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- 4 Concepts Grid -->
+    <div class="concepts-grid">
+
+      <!-- Concept 1 -->
+      <div class="concept-card selected" id="card-concept-1" data-id="concept-1" data-svg="assets/logos/concept-1-silhouette.svg" data-name="Golden Apex Silhouette">
+        <span class="card-badge" style="background:rgba(212,175,55,0.2); border-color:var(--cinema-gold); color:var(--cinema-gold);"><i class="bi bi-patch-check-fill"></i> ACTIVE EXTENSION LOGO</span>
+        <div class="logo-hero-box">
+          <img src="assets/logos/concept-1-silhouette.svg" alt="Concept 1">
+        </div>
+        <div class="concept-title">Golden Apex Silhouette</div>
+        <div class="concept-desc">
+          Minimalist luxury supercar aerodynamic profile in radiant cinema gold with camera shutter viewfinder brackets and subtle LED speed streaks. Installed as active extension icons.
+        </div>
+
+        <div class="size-test-container">
+          <div class="size-test-title">
+            <span>Chrome Scale Preview</span>
+            <i class="bi bi-display"></i>
+          </div>
+          <div class="size-previews-row">
+            <div class="size-item">
+              <div class="size-box-128"><img src="assets/logos/concept-1-silhouette.svg"></div>
+              <span class="size-label">128px</span>
+            </div>
+            <div class="size-item">
+              <div class="size-box-48"><img src="assets/logos/concept-1-silhouette.svg"></div>
+              <span class="size-label">48px</span>
+            </div>
+            <div class="size-item">
+              <div class="size-box-16"><img src="assets/logos/concept-1-silhouette.svg"></div>
+              <span class="size-label">16px</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="select-btn" onclick="selectLogo('concept-1')">
+          <i class="bi bi-check-circle"></i> Select Concept 1
+        </button>
+      </div>
+
+      <!-- Concept 2 -->
+      <div class="concept-card" id="card-concept-2" data-id="concept-2" data-svg="assets/logos/concept-2-gauge.svg" data-name="Cinematic Tachometer">
+        <span class="card-badge">ALTERNATIVE OPTION</span>
+        <div class="logo-hero-box">
+          <img src="assets/logos/concept-2-gauge.svg" alt="Concept 2">
+        </div>
+        <div class="concept-title">Cinematic Tachometer</div>
+        <div class="concept-desc">
+          Automotive tachometer dial blending into an 8-blade camera aperture iris with a glowing crimson redline needle pointing to apex peak performance.
+        </div>
+
+        <div class="size-test-container">
+          <div class="size-test-title">
+            <span>Chrome Scale Preview</span>
+            <i class="bi bi-display"></i>
+          </div>
+          <div class="size-previews-row">
+            <div class="size-item">
+              <div class="size-box-128"><img src="assets/logos/concept-2-gauge.svg"></div>
+              <span class="size-label">128px</span>
+            </div>
+            <div class="size-item">
+              <div class="size-box-48"><img src="assets/logos/concept-2-gauge.svg"></div>
+              <span class="size-label">48px</span>
+            </div>
+            <div class="size-item">
+              <div class="size-box-16"><img src="assets/logos/concept-2-gauge.svg"></div>
+              <span class="size-label">16px</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="select-btn" onclick="selectLogo('concept-2')">
+          <i class="bi bi-arrow-repeat"></i> Switch to Concept 2
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Live Chrome Toolbar Preview -->
+    <div class="browser-toolbar-simulation">
+      <div class="toolbar-title"><i class="bi bi-window-sidebar"></i> Live Chrome Toolbar Pinned Preview</div>
+      <div class="mock-chrome-bar">
+        <div style="display:flex; gap:8px; color:#666;">
+          <i class="bi bi-arrow-left"></i>
+          <i class="bi bi-arrow-right"></i>
+          <i class="bi bi-arrow-clockwise"></i>
+        </div>
+        <div class="mock-address-box">
+          <i class="bi bi-lock-fill" style="color:#4ade80; margin-right:8px; font-size:10px;"></i>
+          <span>chrome://newtab</span>
+        </div>
+        <div class="mock-extensions-cluster">
+          <div class="mock-ext-icon" style="background:#222; border:1px solid #333;" id="toolbar-ext-preview">
+            <img src="assets/logos/concept-1-silhouette.svg" id="toolbar-icon-img" alt="Pinned Icon">
+          </div>
+          <i class="bi bi-puzzle" style="color:#aaa; font-size:14px;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="selection-toast">
+    <i class="bi bi-check2-circle" style="color:var(--cinema-gold); font-size:18px;"></i>
+    <span id="toast-text">Concept Selected!</span>
+  </div>
+
+  <script>
+    let selectedConcept = 'concept-1';
+    let currentMode = 'svg';
+
+    const logoSources = {
+      'concept-1': {
+        svg: 'assets/logos/concept-1-silhouette.svg',
+        render: 'assets/logos/concept-1-rendered.jpg',
+        name: 'Golden Apex Silhouette (Active Logo)'
+      },
+      'concept-2': {
+        svg: 'assets/logos/concept-2-gauge.svg',
+        render: 'assets/logos/concept-2-rendered.jpg',
+        name: 'Cinematic Tachometer (Alternative Option)'
+      }
+    };
+
+    function switchStyleMode(mode) {
+      currentMode = mode;
+      document.getElementById('btn-mode-svg').style.background = mode === 'svg' ? 'var(--cinema-gold)' : 'rgba(255,255,255,0.06)';
+      document.getElementById('btn-mode-svg').style.color = mode === 'svg' ? '#000' : '#fff';
+      document.getElementById('btn-mode-3d').style.background = mode === '3d' ? 'var(--cinema-gold)' : 'rgba(255,255,255,0.06)';
+      document.getElementById('btn-mode-3d').style.color = mode === '3d' ? '#000' : '#fff';
+
+      for (const [id, data] of Object.entries(logoSources)) {
+        const card = document.getElementById('card-' + id);
+        if (!card) continue;
+        const targetSrc = mode === 'svg' ? data.svg : data.render;
+        card.querySelectorAll('img').forEach(img => {
+          img.src = targetSrc;
+        });
+      }
+
+      if (logoSources[selectedConcept]) {
+        document.getElementById('toolbar-icon-img').src = mode === 'svg' ? logoSources[selectedConcept].svg : logoSources[selectedConcept].render;
+      }
+    }
+
+    function selectLogo(conceptId) {
+      selectedConcept = conceptId;
+      document.querySelectorAll('.concept-card').forEach(c => c.classList.remove('selected'));
+      const activeCard = document.getElementById('card-' + conceptId);
+      if (activeCard) {
+        activeCard.classList.add('selected');
+        const data = logoSources[conceptId];
+        const targetSrc = currentMode === 'svg' ? data.svg : data.render;
+        
+        // Update live toolbar simulation
+        document.getElementById('toolbar-icon-img').src = targetSrc;
+
+        showToast(`Selected "${data.name}"! Reply: "Apply Concept ${conceptId.split('-')[1]}" to install it into your extension!`);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('selection-toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    // Default select concept 1
+    selectLogo('concept-1');
+  </script>
+</body>
+</html>
