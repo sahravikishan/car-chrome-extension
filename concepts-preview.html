@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexTab | 4 Premium Car Wallpaper UI Concepts</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-red: #e50914;
+      --accent-crimson: #ff2a4b;
+      --gold-accent: #d4af37;
+      --neon-cyan: #00f2fe;
+      --neon-purple: #4facfe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: #09090b;
+      color: #f4f4f5;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Top Comparison Controller Bar */
+    #concept-controller-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(12, 12, 15, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 99999;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    }
+
+    .brand-logo-preview {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-preview .badge-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #e50914, #990000);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(229, 9, 20, 0.35);
+    }
+
+    .brand-logo-preview .title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .brand-logo-preview .subtitle {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .concept-tabs-nav {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 4px;
+    }
+
+    .concept-tab-btn {
+      background: transparent;
+      border: none;
+      color: #a1a1aa;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .concept-tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .concept-tab-btn.active {
+      background: #ffffff;
+      color: #09090b;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .concept-tab-btn.active.concept-1 {
+      background: linear-gradient(135deg, #1c1c24, #121217);
+      color: #ff334b;
+      border: 1px solid #ff334b;
+    }
+
+    .concept-tab-btn.active.concept-2 {
+      background: #f4f4f5;
+      color: #09090b;
+    }
+
+    .concept-tab-btn.active.concept-3 {
+      background: rgba(0, 242, 254, 0.15);
+      color: #00f2fe;
+      border: 1px solid #00f2fe;
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.3);
+    }
+
+    .concept-tab-btn.active.concept-4 {
+      background: linear-gradient(135deg, #d4af37, #b89320);
+      color: #09090b;
+    }
+
+    .action-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-matrix-view {
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .btn-matrix-view:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .btn-fullscreen {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-fullscreen:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Main Viewport Container */
+    #viewport-container {
+      position: absolute;
+      top: 64px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .concept-view {
+      position: absolute;
+      inset: 0;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      overflow: hidden;
+    }
+
+    .concept-view.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Shared Background Engine */
+    .viewport-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      transition: background-image 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
+      transform: scale(1.0);
+    }
+
+    /* ==========================================================
+       CONCEPT 1: LUXURY DARK THEME
+       Charcoal & Deep Obsidian, Red Carbon Accent, Prestige Monogram
+       ========================================================== */
+    #c1-root {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+    }
+
+    #c1-root .c1-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(10, 10, 14, 0.2) 0%, rgba(5, 5, 8, 0.75) 75%, rgba(0, 0, 0, 0.95) 100%);
+      pointer-events: none;
+    }
+
+    .c1-navbar {
+      position: absolute;
+      top: 28px;
+      left: 40px;
+      right: 40px;
+      height: 68px;
+      background: rgba(18, 18, 24, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 51, 75, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 20;
+    }
+
+    .c1-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .c1-emblem {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid #ff334b;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff334b;
+      font-size: 16px;
+      font-weight: 800;
+      background: rgba(255, 51, 75, 0.08);
+      box-shadow: 0 0 15px rgba(255, 51, 75, 0.3);
+    }
+
+    .c1-title {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff, #a3a3a3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .c1-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .c1-nav-item {
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .c1-nav-item:hover, .c1-nav-item.active {
+      color: #fff;
+      background: rgba(255, 51, 75, 0.15);
+      border: 1px solid rgba(255, 51, 75, 0.4);
+    }
+
+    .c1-categories-pill-bar {
+      position: absolute;
+      top: 116px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(14, 14, 18, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 30px;
+      padding: 5px 6px;
+      display: flex;
+      gap: 4px;
+      z-index: 15;
+    }
+
+    .c1-cat-btn {
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      background: transparent;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .c1-cat-btn:hover {
+      color: #fff;
+    }
+
+    .c1-cat-btn.active {
+      background: #ff334b;
+      color: #fff;
+      box-shadow: 0 2px 14px rgba(255, 51, 75, 0.5);
+    }
+
+    .c1-hero-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .c1-clock {
+      font-family: 'Cinzel', serif;
+      font-size: 96px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      line-height: 1;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .c1-date {
+      margin-top: 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .c1-footer-bar {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      right: 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    .c1-car-card {
+      background: rgba(15, 15, 20, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 51, 75, 0.3);
+      border-radius: 16px;
+      padding: 16px 22px;
+      max-width: 420px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+    }
+
+    .c1-car-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ff334b;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .c1-car-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .c1-car-specs {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .c1-car-specs span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .c1-controls-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .c1-btn-round {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(20, 20, 28, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .c1-btn-round:hover {
+      background: #ff334b;
+      border-color: #ff334b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 51, 75, 0.4);
+    }
+
+    /* ==========================================================
+       CONCEPT 2: MINIMAL GALLERY
+       Clean Scandinavian modernism, architectural typography, wide strip
+       ========================================================== */
+    #c2-root {
+      font-family: 'Space Grotesk', sans-serif;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+    }
+
+    #c2-root .c2-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 12, 0.3) 0%, rgba(10, 10, 12, 0) 30%, rgba(10, 10, 12, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .c2-header {
+      position: absolute;
+      top: 36px;
+      left: 50px;
+      right: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .c2-title-box {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .c2-logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .c2-logo span {
+      color: #a1a1aa;
+      font-weight: 300;
+      font-size: 16px;
+      margin-left: 6px;
+    }
+
+    .c2-category-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .c2-cat-link {
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 6px;
+      transition: color 0.2s;
+    }
+
+    .c2-cat-link:hover, .c2-cat-link.active {
+      color: #fff;
+    }
+
+    .c2-cat-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #fff;
+    }
+
+    .c2-actions-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      padding: 6px 14px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .c2-action-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .c2-action-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .c2-middle-info {
+      position: absolute;
+      left: 50px;
+      bottom: 150px;
+      max-width: 480px;
+      z-index: 20;
+    }
+
+    .c2-badge-idx {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a1a1aa;
+      margin-bottom: 8px;
+    }
+
+    .c2-car-heading {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+
+    .c2-strip-container {
+      position: absolute;
+      bottom: 30px;
+      left: 50px;
+      right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    .c2-gallery-strip {
+      display: flex;
+      gap: 12px;
+    }
+
+    .c2-thumb {
+      width: 90px;
+      height: 56px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.6;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .c2-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .c2-thumb:hover {
+      opacity: 0.9;
+      transform: translateY(-3px);
+    }
+
+    .c2-thumb.active {
+      border-color: #fff;
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .c2-nav-arrows {
+      display: flex;
+      gap: 10px;
+    }
+
+    .c2-square-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+
+    .c2-square-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ==========================================================
+       CONCEPT 3: FUTURISTIC DASHBOARD
+       Cockpit Telemetry HUD, Cyan Neon Accents, Digital Speedo Gauge
+       ========================================================== */
+    #c3-root {
+      font-family: 'Orbitron', monospace;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: #00f2fe;
+    }
+
+    #c3-root .c3-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.04) 0%, rgba(5, 10, 20, 0.75) 75%, rgba(2, 4, 8, 0.95) 100%);
+      pointer-events: none;
+    }
+
+    .c3-hud-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .c3-top-cluster {
+      position: absolute;
+      top: 24px;
+      left: 36px;
+      right: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .c3-hud-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(6, 18, 32, 0.75);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 10px 18px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .c3-hud-brand .dot-pulse {
+      width: 8px;
+      height: 8px;
+      background: #00f2fe;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f2fe;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .c3-sys-status {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .c3-mode-selector {
+      display: flex;
+      background: rgba(6, 18, 32, 0.8);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 8px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .c3-mode-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .c3-mode-btn:hover {
+      color: #00f2fe;
+    }
+
+    .c3-mode-btn.active {
+      background: rgba(0, 242, 254, 0.2);
+      color: #00f2fe;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+      border: 1px solid rgba(0, 242, 254, 0.5);
+    }
+
+    .c3-side-telemetry {
+      position: absolute;
+      right: 36px;
+      top: 140px;
+      width: 260px;
+      background: rgba(6, 18, 32, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 12px;
+      padding: 20px;
+      z-index: 20;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+    }
+
+    .c3-telem-header {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #8892b0;
+      border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .c3-metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .c3-metric-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #8892b0;
+    }
+
+    .c3-metric-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .c3-bar-wrap {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .c3-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      width: 82%;
+    }
+
+    .c3-bottom-cockpit {
+      position: absolute;
+      bottom: 28px;
+      left: 36px;
+      right: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 20;
+    }
+
+    .c3-spec-hud {
+      background: rgba(6, 18, 32, 0.8);
+      backdrop-filter: blur(16px);
+      border-left: 3px solid #00f2fe;
+      border-top: 1px solid rgba(0, 242, 254, 0.25);
+      border-right: 1px solid rgba(0, 242, 254, 0.1);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+      padding: 16px 24px;
+      border-radius: 0 12px 12px 0;
+      max-width: 480px;
+    }
+
+    .c3-hud-sub {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #00f2fe;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .c3-hud-main {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .c3-nav-hud-controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .c3-hud-btn {
+      background: rgba(6, 18, 32, 0.85);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      color: #00f2fe;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-family: 'Orbitron', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+
+    .c3-hud-btn:hover {
+      background: rgba(0, 242, 254, 0.2);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       CONCEPT 4: CINEMATIC EXPERIENCE
+       Full-bleed photography, anamorphic aspect, minimal floating HUD
+       ========================================================== */
+    #c4-root {
+      font-family: 'Syne', sans-serif;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+    }
+
+    #c4-root .c4-vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.85);
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 20%, transparent 75%, rgba(0,0,0,0.8) 100%);
+      pointer-events: none;
+    }
+
+    .c4-film-bars {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background: #000;
+      z-index: 10;
+    }
+
+    .c4-film-bars.top { top: 0; }
+    .c4-film-bars.bottom { bottom: 0; }
+
+    .c4-cinematic-header {
+      position: absolute;
+      top: 40px;
+      left: 48px;
+      right: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .c4-studio-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .c4-studio-tag i {
+      font-size: 15px;
+    }
+
+    .c4-floating-dock {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 12px;
+      border-radius: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .c4-dock-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .c4-dock-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .c4-dock-btn.active {
+      background: #d4af37;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .c4-cinema-footer {
+      position: absolute;
+      bottom: 44px;
+      left: 48px;
+      right: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 20;
+    }
+
+    .c4-title-cluster {
+      max-width: 500px;
+    }
+
+    .c4-camera-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #d4af37;
+      margin-bottom: 6px;
+    }
+
+    .c4-vehicle-title {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    }
+
+    .c4-minimal-transport {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .c4-round-pill {
+      height: 48px;
+      border-radius: 24px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .c4-transport-icon {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      opacity: 0.75;
+      transition: all 0.2s;
+    }
+
+    .c4-transport-icon:hover {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    .c4-transport-icon.active-heart {
+      color: #ff334b;
+      opacity: 1;
+    }
+
+    /* ==========================================================
+       SIDE-BY-SIDE MATRIX COMPARISON MODAL
+       ========================================================== */
+    #matrix-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 8, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 100000;
+      display: none;
+      flex-direction: column;
+      padding: 24px 32px;
+      overflow-y: auto;
+    }
+
+    #matrix-modal.open {
+      display: flex;
+    }
+
+    .matrix-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 16px;
+    }
+
+    .matrix-title h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .matrix-title p {
+      font-size: 13px;
+      color: #a1a1aa;
+      margin-top: 4px;
+    }
+
+    .matrix-close-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .matrix-close-btn:hover {
+      background: #ff334b;
+    }
+
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      flex: 1;
+    }
+
+    .matrix-card {
+      background: #121217;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .matrix-card:hover {
+      border-color: #ff334b;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+      transform: translateY(-3px);
+    }
+
+    .matrix-preview-img-wrapper {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .matrix-preview-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .matrix-card:hover .matrix-preview-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .matrix-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .matrix-card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .matrix-card-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .matrix-card-desc {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .matrix-specs-list {
+      list-style: none;
+      font-size: 12px;
+      color: #bbb;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .matrix-specs-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .matrix-specs-list li i {
+      color: #ff334b;
+      font-size: 11px;
+    }
+
+    .matrix-select-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .matrix-select-btn:hover {
+      background: #ff334b;
+      border-color: #ff334b;
+      color: #fff;
+    }
+
+    /* Common interactive modals inside views */
+    .view-modal {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .view-modal.active {
+      display: flex;
+    }
+
+    .view-modal-card {
+      background: #15151c;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 580px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .view-modal-card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .view-modal-close:hover {
+      color: #fff;
+    }
+
+    .settings-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .setting-item-label {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .setting-toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #333;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .setting-toggle.on {
+      background: #ff334b;
+    }
+
+    .setting-toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .setting-toggle.on .setting-toggle-thumb {
+      transform: translateX(20px);
+    }
+
+    /* Notification toast */
+    #preview-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(20, 20, 26, 0.95);
+      border: 1px solid rgba(255, 51, 75, 0.4);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      z-index: 100001;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    #preview-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .c1-clock { font-size: 64px; }
+      .matrix-grid { grid-template-columns: 1fr; }
+      .c3-side-telemetry { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Controller Bar: Compare Concepts -->
+  <header id="concept-controller-bar">
+    <div class="brand-logo-preview">
+      <div class="badge-icon"><i class="fa-solid fa-car-side"></i></div>
+      <div>
+        <div class="title">ApexTab New Tab UI Concepts</div>
+        <div class="subtitle">Select & Compare 4 Designs</div>
+      </div>
+    </div>
+
+    <nav class="concept-tabs-nav">
+      <button class="concept-tab-btn active concept-1" onclick="switchConcept(1)">
+        <i class="fa-solid fa-gem"></i> 1. Luxury Dark Theme
+      </button>
+      <button class="concept-tab-btn concept-2" onclick="switchConcept(2)">
+        <i class="fa-solid fa-layer-group"></i> 2. Minimal Gallery
+      </button>
+      <button class="concept-tab-btn concept-3" onclick="switchConcept(3)">
+        <i class="fa-solid fa-gauge-high"></i> 3. Futuristic Dashboard
+      </button>
+      <button class="concept-tab-btn concept-4" onclick="switchConcept(4)">
+        <i class="fa-solid fa-clapperboard"></i> 4. Cinematic Experience
+      </button>
+    </nav>
+
+    <div class="action-badge-group">
+      <button class="btn-matrix-view" onclick="openMatrixModal()">
+        <i class="fa-solid fa-table-cells-large"></i> Side-by-Side Matrix
+      </button>
+      <button class="btn-fullscreen" onclick="toggleFullScreen()" title="Toggle Fullscreen">
+        <i class="fa-solid fa-expand"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Viewport Container holding the 4 Full Screen Layouts -->
+  <main id="viewport-container">
+
+    <!-- ========================================================
+         CONCEPT 1: LUXURY DARK THEME
+         ======================================================== -->
+    <section id="concept-1" class="concept-view active">
+      <div class="viewport-bg" id="c1-bg"></div>
+      <div class="c1-overlay"></div>
+
+      <!-- Luxury Navigation Bar -->
+      <nav class="c1-navbar">
+        <div class="c1-brand">
+          <div class="c1-emblem">A</div>
+          <span class="c1-title">APEX LUXE</span>
+        </div>
+
+        <div class="c1-nav-links">
+          <div class="c1-nav-item active" onclick="showToast('Nav: Home')"><i class="fa-solid fa-house"></i> Home</div>
+          <div class="c1-nav-item" onclick="openExploreModal()"><i class="fa-regular fa-compass"></i> Explore</div>
+          <div class="c1-nav-item" onclick="openUploadModal()"><i class="fa-solid fa-cloud-arrow-up"></i> My Wallpapers</div>
+          <div class="c1-nav-item" onclick="toggleFavorite()"><i class="fa-regular fa-heart" id="c1-fav-icon"></i> Favorites</div>
+          <div class="c1-nav-item" onclick="openSettingsModal()"><i class="fa-solid fa-sliders"></i> Settings</div>
+        </div>
+      </nav>
+
+      <!-- Category Filter Pills (Only the 5 allowed: Luxury, Sports, Classic, Off-Road, MIX) -->
+      <div class="c1-categories-pill-bar">
+        <button class="c1-cat-btn active" onclick="setCategory('MIX', this)">MIX</button>
+        <button class="c1-cat-btn" onclick="setCategory('Luxury Cars', this)">Luxury Cars</button>
+        <button class="c1-cat-btn" onclick="setCategory('Sports Cars', this)">Sports Cars</button>
+        <button class="c1-cat-btn" onclick="setCategory('Classic Cars', this)">Classic Cars</button>
+        <button class="c1-cat-btn" onclick="setCategory('Off-Road & SUVs', this)">Off-Road & SUVs</button>
+      </div>
+
+      <!-- Luxury Center Clock & Date -->
+      <div class="c1-hero-center">
+        <div class="c1-clock" id="c1-clock">09:42</div>
+        <div class="c1-date" id="c1-date">Tuesday, November 17</div>
+      </div>
+
+      <!-- Footer Bar: Minimal Details & Controls -->
+      <footer class="c1-footer-bar">
+        <div class="c1-car-card">
+          <div class="c1-car-tag" id="c1-cat-tag">Luxury Cars</div>
+          <div class="c1-car-name" id="c1-car-name">Rolls-Royce Phantom VIII</div>
+          <div class="c1-car-specs">
+            <span><i class="fa-solid fa-bolt" style="color: #ff334b;"></i> 6.75L Twin-Turbo V12</span>
+            <span><i class="fa-solid fa-gauge-simple"></i> 563 HP</span>
+            <span><i class="fa-solid fa-camera"></i> Unsplash UHD</span>
+          </div>
+        </div>
+
+        <div class="c1-controls-cluster">
+          <button class="c1-btn-round" onclick="prevWallpaper()" title="Previous Wallpaper">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="c1-btn-round" onclick="randomWallpaper()" title="Random Wallpaper">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+          <button class="c1-btn-round" onclick="nextWallpaper()" title="Next Wallpaper">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <button class="c1-btn-round" onclick="toggleFavorite()" title="Add to Favorites">
+            <i class="fa-regular fa-heart" id="c1-heart-btn"></i>
+          </button>
+          <button class="c1-btn-round" onclick="openUploadModal()" title="Upload Image">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ========================================================
+         CONCEPT 2: MINIMAL GALLERY
+         ======================================================== -->
+    <section id="concept-2" class="concept-view">
+      <div class="viewport-bg" id="c2-bg"></div>
+      <div class="c2-overlay"></div>
+
+      <header class="c2-header">
+        <div class="c2-title-box">
+          <div class="c2-logo">APEX <span>GALLERY</span></div>
+        </div>
+
+        <!-- Clean Text Navigation Categories -->
+        <div class="c2-category-nav">
+          <span class="c2-cat-link active" onclick="setCategory('MIX', this)">All (MIX)</span>
+          <span class="c2-cat-link" onclick="setCategory('Luxury Cars', this)">Luxury</span>
+          <span class="c2-cat-link" onclick="setCategory('Sports Cars', this)">Sports</span>
+          <span class="c2-cat-link" onclick="setCategory('Classic Cars', this)">Classics</span>
+          <span class="c2-cat-link" onclick="setCategory('Off-Road & SUVs', this)">Off-Road & SUV</span>
+        </div>
+
+        <div class="c2-actions-pill">
+          <button class="c2-action-btn" onclick="openExploreModal()"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="c2-action-btn" onclick="toggleFavorite()"><i class="fa-regular fa-heart" id="c2-fav-icon"></i></button>
+          <button class="c2-action-btn" onclick="openUploadModal()"><i class="fa-solid fa-plus"></i></button>
+          <button class="c2-action-btn" onclick="openSettingsModal()"><i class="fa-solid fa-gear"></i></button>
+        </div>
+      </header>
+
+      <div class="c2-middle-info">
+        <div class="c2-badge-idx" id="c2-badge-idx">NO. 01 / COLLECTION 2026</div>
+        <h1 class="c2-car-heading" id="c2-car-heading">Aston Martin Vantage GT</h1>
+      </div>
+
+      <div class="c2-strip-container">
+        <!-- Live Mini Thumbnails Strip -->
+        <div class="c2-gallery-strip" id="c2-gallery-strip">
+          <!-- Dynamic thumbnails will render here -->
+        </div>
+
+        <div class="c2-nav-arrows">
+          <button class="c2-square-btn" onclick="prevWallpaper()"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="c2-square-btn" onclick="randomWallpaper()"><i class="fa-solid fa-shuffle"></i></button>
+          <button class="c2-square-btn" onclick="nextWallpaper()"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CONCEPT 3: FUTURISTIC DASHBOARD
+         ======================================================== -->
+    <section id="concept-3" class="concept-view">
+      <div class="viewport-bg" id="c3-bg"></div>
+      <div class="c3-overlay"></div>
+      <div class="c3-hud-grid"></div>
+
+      <!-- Top HUD Cluster -->
+      <header class="c3-top-cluster">
+        <div class="c3-hud-brand">
+          <div class="dot-pulse"></div>
+          <div>
+            <div class="c3-sys-status">SYS.ONLINE // TELEMETRY ACTIVE</div>
+            <div style="font-size: 10px; color: #8892b0;">APEX COCKPIT v3.8</div>
+          </div>
+        </div>
+
+        <!-- Mode / Category Selector Buttons -->
+        <div class="c3-mode-selector">
+          <button class="c3-mode-btn active" onclick="setCategory('MIX', this)">[ MIX ]</button>
+          <button class="c3-mode-btn" onclick="setCategory('Luxury Cars', this)">LUXURY</button>
+          <button class="c3-mode-btn" onclick="setCategory('Sports Cars', this)">SPORTS</button>
+          <button class="c3-mode-btn" onclick="setCategory('Classic Cars', this)">CLASSIC</button>
+          <button class="c3-mode-btn" onclick="setCategory('Off-Road & SUVs', this)">OFF-ROAD</button>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="c3-hud-btn" onclick="openSettingsModal()"><i class="fa-solid fa-sliders"></i> CONFIG</button>
+          <button class="c3-hud-btn" onclick="openUploadModal()"><i class="fa-solid fa-upload"></i> INGEST</button>
+        </div>
+      </header>
+
+      <!-- Side Telemetry Card -->
+      <aside class="c3-side-telemetry">
+        <div class="c3-telem-header">
+          <span>VEHICLE TELEMETRY</span>
+          <span style="color:#00f2fe;">ACTIVE</span>
+        </div>
+        <div class="c3-metric-row">
+          <span class="c3-metric-label">Power Output</span>
+          <span class="c3-metric-value" id="c3-hp-val">715 HP</span>
+        </div>
+        <div class="c3-bar-wrap"><div class="c3-bar-fill"></div></div>
+        <div class="c3-metric-row" style="margin-top:14px;">
+          <span class="c3-metric-label">0-100 KM/H</span>
+          <span class="c3-metric-value" id="c3-acc-val">3.4 SEC</span>
+        </div>
+        <div class="c3-bar-wrap"><div class="c3-bar-fill" style="width:92%;"></div></div>
+        <div class="c3-metric-row" style="margin-top:14px;">
+          <span class="c3-metric-label">Drive Configuration</span>
+          <span class="c3-metric-value" id="c3-drive-val">AWD / RWD</span>
+        </div>
+      </aside>
+
+      <!-- Bottom Cockpit Controls -->
+      <footer class="c3-bottom-cockpit">
+        <div class="c3-spec-hud">
+          <div class="c3-hud-sub" id="c3-hud-cat">CLASSIC CARS // ARCHIVE</div>
+          <div class="c3-hud-main" id="c3-hud-name">1967 Shelby Mustang GT500</div>
+          <div style="font-family:'Inter', sans-serif; font-size:12px; color:#a1a1aa; margin-top:4px;">
+            Telemetry calibrated for ultra-wide & 1080p new tab canvas
+          </div>
+        </div>
+
+        <div class="c3-nav-hud-controls">
+          <button class="c3-hud-btn" onclick="prevWallpaper()"><i class="fa-solid fa-angles-left"></i> PREV</button>
+          <button class="c3-hud-btn" onclick="randomWallpaper()"><i class="fa-solid fa-dice"></i> RANDOM</button>
+          <button class="c3-hud-btn" onclick="nextWallpaper()">NEXT <i class="fa-solid fa-angles-right"></i></button>
+          <button class="c3-hud-btn" onclick="toggleFavorite()"><i class="fa-regular fa-star" id="c3-fav-icon"></i> FAV</button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ========================================================
+         CONCEPT 4: CINEMATIC EXPERIENCE
+         ======================================================== -->
+    <section id="concept-4" class="concept-view">
+      <div class="viewport-bg" id="c4-bg"></div>
+      <div class="c4-vignette"></div>
+      <div class="c4-film-bars top"></div>
+      <div class="c4-film-bars bottom"></div>
+
+      <!-- Studio Header -->
+      <header class="c4-cinematic-header">
+        <div class="c4-studio-tag">
+          <i class="fa-solid fa-film"></i>
+          <span>APEX CINEMA // 4K AUTOMOTIVE</span>
+        </div>
+
+        <!-- Floating Glass Category Dock -->
+        <nav class="c4-floating-dock">
+          <button class="c4-dock-btn active" onclick="setCategory('MIX', this)">Mix</button>
+          <button class="c4-dock-btn" onclick="setCategory('Luxury Cars', this)">Luxury</button>
+          <button class="c4-dock-btn" onclick="setCategory('Sports Cars', this)">Sports</button>
+          <button class="c4-dock-btn" onclick="setCategory('Classic Cars', this)">Classics</button>
+          <button class="c4-dock-btn" onclick="setCategory('Off-Road & SUVs', this)">Off-Road & SUVs</button>
+        </nav>
+
+        <div style="display:flex; gap:10px;">
+          <button class="c4-dock-btn" onclick="openExploreModal()" style="color:#fff;"><i class="fa-solid fa-search"></i> Search</button>
+          <button class="c4-dock-btn" onclick="openSettingsModal()" style="color:#fff;"><i class="fa-solid fa-sliders"></i></button>
+        </div>
+      </header>
+
+      <!-- Bottom Cinematic Transport -->
+      <footer class="c4-cinema-footer">
+        <div class="c4-title-cluster">
+          <div class="c4-camera-meta" id="c4-camera-meta">HASSELBLAD 100MP // 35MM F/1.4</div>
+          <div class="c4-vehicle-title" id="c4-vehicle-title">Mercedes-AMG G63 Off-Road</div>
+        </div>
+
+        <div class="c4-minimal-transport">
+          <div class="c4-round-pill">
+            <button class="c4-transport-icon" onclick="prevWallpaper()" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+            <button class="c4-transport-icon" onclick="randomWallpaper()" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+            <button class="c4-transport-icon" onclick="nextWallpaper()" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+            <div style="width:1px; height:20px; background:rgba(255,255,255,0.2);"></div>
+            <button class="c4-transport-icon" onclick="toggleFavorite()" title="Favorite"><i class="fa-regular fa-heart" id="c4-fav-icon"></i></button>
+            <button class="c4-transport-icon" onclick="openUploadModal()" title="Upload Custom"><i class="fa-solid fa-upload"></i></button>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       MODAL 1: SIDE-BY-SIDE MATRIX COMPARISON
+       ======================================================== -->
+  <div id="matrix-modal">
+    <div class="matrix-modal-header">
+      <div class="matrix-title">
+        <h2>Compare All 4 UI Concepts</h2>
+        <p>Review the visual language, typography, and controls of each automotive experience before making your selection.</p>
+      </div>
+      <button class="matrix-close-btn" onclick="closeMatrixModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="matrix-grid">
+      <!-- Card 1 -->
+      <div class="matrix-card">
+        <div class="matrix-preview-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1200&q=80" alt="Luxury Dark Theme">
+          <span class="matrix-badge" style="color: #ff334b; border-color: #ff334b;">CONCEPT 01</span>
+        </div>
+        <div class="matrix-card-content">
+          <div class="matrix-card-name">1. Luxury Dark Theme</div>
+          <div class="matrix-card-desc">
+            Obsidian and charcoal backgrounds accented with precision crimson carbon details. Features classical serif typography (Cinzel), high-status automotive branding, and centered luxury timekeeping.
+          </div>
+          <ul class="matrix-specs-list">
+            <li><i class="fa-solid fa-check"></i> Deep satin black & charcoal finish</li>
+            <li><i class="fa-solid fa-check"></i> Subtle crimson glowing indicators</li>
+            <li><i class="fa-solid fa-check"></i> Center prestige clock & date</li>
+            <li><i class="fa-solid fa-check"></i> Circular frosted glass transport controls</li>
+          </ul>
+          <button class="matrix-select-btn" onclick="selectConceptFromMatrix(1)">
+            <i class="fa-solid fa-eye"></i> Preview Fullscreen Concept 1
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="matrix-card">
+        <div class="matrix-preview-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Minimal Gallery">
+          <span class="matrix-badge" style="color: #fff; border-color: #fff;">CONCEPT 02</span>
+        </div>
+        <div class="matrix-card-content">
+          <div class="matrix-card-name">2. Minimal Gallery</div>
+          <div class="matrix-card-desc">
+            Clean, modern editorial layout with architectural typography (Space Grotesk). Features an interactive bottom filmstrip gallery with live thumbnails, understated headers, and unobstructed photographic focus.
+          </div>
+          <ul class="matrix-specs-list">
+            <li><i class="fa-solid fa-check"></i> Clean Scandinavian minimalism</li>
+            <li><i class="fa-solid fa-check"></i> Live interactive thumbnail strip</li>
+            <li><i class="fa-solid fa-check"></i> Bold editorial vehicle typography</li>
+            <li><i class="fa-solid fa-check"></i> Subtle frosted navigation pills</li>
+          </ul>
+          <button class="matrix-select-btn" onclick="selectConceptFromMatrix(2)">
+            <i class="fa-solid fa-eye"></i> Preview Fullscreen Concept 2
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="matrix-card">
+        <div class="matrix-preview-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=1200&q=80" alt="Futuristic Dashboard">
+          <span class="matrix-badge" style="color: #00f2fe; border-color: #00f2fe;">CONCEPT 03</span>
+        </div>
+        <div class="matrix-card-content">
+          <div class="matrix-card-name">3. Futuristic Dashboard</div>
+          <div class="matrix-card-desc">
+            Inspired by high-tech digital cockpits and HUD displays. Features cyber cyan neon accents, live vehicle telemetry gauges (HP, acceleration, drive mode), and digital monospace typography (Orbitron).
+          </div>
+          <ul class="matrix-specs-list">
+            <li><i class="fa-solid fa-check"></i> Electric cyan neon accents & HUD grid</li>
+            <li><i class="fa-solid fa-check"></i> Live vehicle performance telemetry</li>
+            <li><i class="fa-solid fa-check"></i> Digital cockpit system status indicators</li>
+            <li><i class="fa-solid fa-check"></i> Angular high-tech navigation buttons</li>
+          </ul>
+          <button class="matrix-select-btn" onclick="selectConceptFromMatrix(3)">
+            <i class="fa-solid fa-eye"></i> Preview Fullscreen Concept 3
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="matrix-card">
+        <div class="matrix-preview-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" alt="Cinematic Experience">
+          <span class="matrix-badge" style="color: #d4af37; border-color: #d4af37;">CONCEPT 04</span>
+        </div>
+        <div class="matrix-card-content">
+          <div class="matrix-card-name">4. Cinematic Experience</div>
+          <div class="matrix-card-desc">
+            Puts 100% of the focus on breathtaking, full-bleed automotive photography. Anamorphic letterbox bars, warm gold camera metadata, and an ultra-compact floating transport pill that keeps the image center stage.
+          </div>
+          <ul class="matrix-specs-list">
+            <li><i class="fa-solid fa-check"></i> Pure 4K cinema presentation</li>
+            <li><i class="fa-solid fa-check"></i> Studio camera & lens metadata tags</li>
+            <li><i class="fa-solid fa-check"></i> Ultra-compact floating pill transport</li>
+            <li><i class="fa-solid fa-check"></i> Subtle warm gold luxury accents</li>
+          </ul>
+          <button class="matrix-select-btn" onclick="selectConceptFromMatrix(4)">
+            <i class="fa-solid fa-eye"></i> Preview Fullscreen Concept 4
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 2: INTERACTIVE SETTINGS PREVIEW
+       ======================================================== -->
+  <div id="settings-modal" class="view-modal">
+    <div class="view-modal-card">
+      <button class="view-modal-close" onclick="closeModals()"><i class="fa-solid fa-xmark"></i></button>
+      <h3><i class="fa-solid fa-sliders" style="color: #ff334b;"></i> Extension Settings</h3>
+      <p style="font-size: 13px; color: #888; margin-bottom: 16px;">Customize your New Tab preferences. All settings are persisted locally.</p>
+      
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div>
+            <div class="setting-item-label" style="font-weight: 600; color: #fff;">Default Category</div>
+            <div style="font-size: 11px; color: #777;">Initial wallpapers shown on new tabs</div>
+          </div>
+          <select id="setting-default-cat" style="background:#222; color:#fff; border:1px solid #444; border-radius:6px; padding:6px 10px; font-size:12px;">
+            <option value="MIX">MIX (All Categories)</option>
+            <option value="Luxury Cars">Luxury Cars</option>
+            <option value="Sports Cars">Sports Cars</option>
+            <option value="Classic Cars">Classic Cars</option>
+            <option value="Off-Road & SUVs">Off-Road & SUVs</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-item-label" style="font-weight: 600; color: #fff;">Random Wallpaper on New Tab</div>
+            <div style="font-size: 11px; color: #777;">Shuffle a fresh car on every tab open</div>
+          </div>
+          <div class="setting-toggle on" onclick="toggleSetting(this)"><div class="setting-toggle-thumb"></div></div>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-item-label" style="font-weight: 600; color: #fff;">Show Wallpaper Information</div>
+            <div style="font-size: 11px; color: #777;">Display car model, engine specs and tags</div>
+          </div>
+          <div class="setting-toggle on" onclick="toggleSetting(this)"><div class="setting-toggle-thumb"></div></div>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-item-label" style="font-weight: 600; color: #fff;">Wallpaper Fit Mode</div>
+            <div style="font-size: 11px; color: #777;">Image sizing algorithm</div>
+          </div>
+          <select id="setting-fit-mode" onchange="changeFitMode(this.value)" style="background:#222; color:#fff; border:1px solid #444; border-radius:6px; padding:6px 10px; font-size:12px;">
+            <option value="cover">Cover (Full Screen Fill)</option>
+            <option value="contain">Contain (Preserve Full Aspect)</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-item-label" style="font-weight: 600; color: #fff;">Clear Saved Favorites</div>
+            <div style="font-size: 11px; color: #777;">Reset favorite bookmarks</div>
+          </div>
+          <button onclick="clearFavoritesPreview()" style="background:#2a1215; border:1px solid #ff334b; color:#ff334b; padding:6px 12px; border-radius:6px; font-size:12px; cursor:pointer;">
+            Clear All
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 3: CUSTOM IMAGE UPLOAD PREVIEW
+       ======================================================== -->
+  <div id="upload-modal" class="view-modal">
+    <div class="view-modal-card">
+      <button class="view-modal-close" onclick="closeModals()"><i class="fa-solid fa-xmark"></i></button>
+      <h3><i class="fa-solid fa-cloud-arrow-up" style="color: #ff334b;"></i> Upload Custom Wallpaper</h3>
+      <p style="font-size: 13px; color: #888; margin-bottom: 16px;">
+        Add your personal car photos (JPG, PNG, WEBP). Stored offline in IndexedDB.
+      </p>
+
+      <div style="border: 2px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 24px; text-align: center; cursor: pointer;" onclick="document.getElementById('upload-input').click()">
+        <i class="fa-regular fa-image" style="font-size: 36px; color: #ff334b; margin-bottom: 10px;"></i>
+        <div style="font-size: 14px; font-weight: 600; color: #fff;">Click to select car image</div>
+        <div style="font-size: 11px; color: #777; margin-top: 4px;">Supports JPG, JPEG, PNG, WEBP (Up to 4K resolution)</div>
+        <input type="file" id="upload-input" accept="image/jpeg,image/png,image/webp" style="display:none;" onchange="handlePreviewUpload(event)">
+      </div>
+
+      <div style="margin-top: 16px;">
+        <label style="font-size: 12px; color: #bbb; display: block; margin-bottom: 6px;">Assign to Category:</label>
+        <select id="upload-category-select" style="width: 100%; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; padding: 10px; font-size: 13px;">
+          <option value="Luxury Cars">Luxury Cars</option>
+          <option value="Sports Cars">Sports Cars</option>
+          <option value="Classic Cars">Classic Cars</option>
+          <option value="Off-Road & SUVs">Off-Road & SUVs</option>
+        </select>
+      </div>
+
+      <div id="upload-preview-box" style="display:none; margin-top:16px; padding:10px; background:#1b1b24; border-radius:8px; display:flex; align-items:center; gap:12px;">
+        <img id="upload-preview-img" style="width:60px; height:40px; object-fit:cover; border-radius:4px;" src="" alt="preview">
+        <div style="flex:1;">
+          <div id="upload-preview-name" style="font-size:12px; font-weight:600; color:#fff;"></div>
+          <div style="font-size:11px; color:#00f2fe;">Ready to save to local IndexedDB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="preview-toast">
+    <i class="fa-solid fa-circle-check" style="color: #ff334b;"></i>
+    <span id="toast-text">Concept updated</span>
+  </div>
+
+  <!-- Interactive JavaScript Engine -->
+  <script>
+    // CAR DATA ENGINE (Strictly: Luxury Cars, Sports Cars, Classic Cars, Off-Road & SUVs)
+    const CAR_COLLECTIONS = {
+      'Luxury Cars': [
+        {
+          name: 'Rolls-Royce Phantom VIII',
+          specs: '6.75L Twin-Turbo V12 | 563 HP | Extended Wheelbase',
+          hp: '563 HP',
+          acc: '5.1 SEC',
+          drive: 'RWD / Luxury Saloon',
+          camera: 'LEICA SL2 // 50MM F/1.4',
+          url: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Bentley Continental GT Speed',
+          specs: '6.0L Twin-Turbo W12 | 650 HP | Grand Tourer',
+          hp: '650 HP',
+          acc: '3.5 SEC',
+          drive: 'AWD / Active Torque Vectoring',
+          camera: 'HASSELBLAD H6D // 35MM F/2.0',
+          url: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Mercedes-Maybach S-Class',
+          specs: '6.0L Biturbo V12 | 621 HP | First Class Lounge',
+          hp: '621 HP',
+          acc: '4.4 SEC',
+          drive: '4MATIC AWD',
+          camera: 'SONY A7R V // 85MM GM',
+          url: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=2560&q=85'
+        }
+      ],
+      'Sports Cars': [
+        {
+          name: 'Porsche 911 GT3 RS',
+          specs: '4.0L Naturally Aspirated Flat-6 | 518 HP | 9000 RPM',
+          hp: '518 HP',
+          acc: '3.0 SEC',
+          drive: 'RWD / Weissach Aero',
+          camera: 'CANON R5 // 24-70MM F/2.8L',
+          url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Aston Martin Vantage GT',
+          specs: '4.0L Twin-Turbo V8 | 656 HP | Electronic Differential',
+          hp: '656 HP',
+          acc: '3.4 SEC',
+          drive: 'RWD / Carbon Ceramic',
+          camera: 'SONY A1 // 70-200MM GM II',
+          url: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Chevrolet Corvette Z06',
+          specs: '5.5L Flat-Plane Crank V8 | 670 HP | Mid-Engine',
+          hp: '670 HP',
+          acc: '2.6 SEC',
+          drive: 'RWD / Magnetic Ride 4.0',
+          camera: 'NIKON Z9 // 35MM F/1.8S',
+          url: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=2560&q=85'
+        }
+      ],
+      'Classic Cars': [
+        {
+          name: '1967 Shelby Mustang GT500',
+          specs: '428 Police Interceptor V8 | 355 HP | 4-Speed Manual',
+          hp: '355 HP',
+          acc: '6.2 SEC',
+          drive: 'RWD / Solid Rear Axle',
+          camera: 'HASSELBLAD 500C // 80MM PLANAR',
+          url: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Mercedes-Benz 300SL Gullwing',
+          specs: '3.0L Inline-6 Direct Injection | 215 HP | Tubular Spaceframe',
+          hp: '215 HP',
+          acc: '7.4 SEC',
+          drive: 'RWD / Swing Axle',
+          camera: 'LEICA M11 // 35MM SUMMILUX',
+          url: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: '1969 Dodge Charger R/T',
+          specs: '426 Hemi V8 | 425 HP | Classic Muscle',
+          hp: '425 HP',
+          acc: '5.3 SEC',
+          drive: 'RWD / TorqueFlite',
+          camera: 'PENTAX 67 // 105MM F/2.4',
+          url: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2560&q=85'
+        }
+      ],
+      'Off-Road & SUVs': [
+        {
+          name: 'Mercedes-AMG G63 Off-Road',
+          specs: '4.0L Biturbo V8 | 577 HP | Triple Locking Differentials',
+          hp: '577 HP',
+          acc: '4.5 SEC',
+          drive: '4MATIC All-Wheel Drive',
+          camera: 'SONY A7S III // 24MM G-MASTER',
+          url: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Land Rover Defender 110 X',
+          specs: '3.0L Turbocharged i6 MHEV | 395 HP | Air Suspension',
+          hp: '395 HP',
+          acc: '5.8 SEC',
+          drive: 'Terrain Response 2 AWD',
+          camera: 'FUJIFILM GFX 100S // 45MM',
+          url: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=2560&q=85'
+        },
+        {
+          name: 'Ford Bronco Raptor',
+          specs: '3.0L EcoBoost V8 | 418 HP | Fox Live Valve Dampers',
+          hp: '418 HP',
+          acc: '5.6 SEC',
+          drive: 'Advanced 4x4 / HOSS 4.0',
+          camera: 'CANON R5C // 35MM F/1.4',
+          url: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=2560&q=85'
+        }
+      ]
+    };
+
+    // State Variables
+    let currentConcept = 1;
+    let currentCategory = 'MIX';
+    let currentIndex = 0;
+    let favoritesList = [];
+    let isCoverMode = true;
+
+    // Helper: Build MIX list combining all 4 categories
+    function getActiveList() {
+      if (currentCategory === 'MIX') {
+        const combined = [];
+        Object.keys(CAR_COLLECTIONS).forEach(cat => {
+          CAR_COLLECTIONS[cat].forEach(item => {
+            combined.push({ ...item, category: cat });
+          });
+        });
+        return combined;
+      }
+      return CAR_COLLECTIONS[currentCategory].map(item => ({ ...item, category: currentCategory }));
+    }
+
+    // Concept Switcher
+    function switchConcept(index) {
+      currentConcept = index;
+      document.querySelectorAll('.concept-view').forEach((view, idx) => {
+        view.classList.toggle('active', idx + 1 === index);
+      });
+      document.querySelectorAll('.concept-tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === index);
+      });
+      updateWallpaperDisplay();
+      showToast(`Switched to Concept ${index}`);
+    }
+
+    // Category Selector
+    function setCategory(cat, el) {
+      currentCategory = cat;
+      currentIndex = 0;
+      
+      // Update UI active buttons across concepts
+      document.querySelectorAll('.c1-cat-btn, .c2-cat-link, .c3-mode-btn, .c4-dock-btn').forEach(btn => {
+        const text = btn.innerText.replace(/\[|\]|\(|\)/g, '').trim();
+        const matches = text.toLowerCase() === cat.toLowerCase() || 
+                       (cat === 'MIX' && (text.includes('MIX') || text.includes('All')));
+        btn.classList.toggle('active', matches);
+      });
+
+      updateWallpaperDisplay();
+      renderConcept2Strip();
+      showToast(`Category: ${cat}`);
+    }
+
+    // Navigate Wallpapers
+    function nextWallpaper() {
+      const list = getActiveList();
+      currentIndex = (currentIndex + 1) % list.length;
+      updateWallpaperDisplay();
+    }
+
+    function prevWallpaper() {
+      const list = getActiveList();
+      currentIndex = (currentIndex - 1 + list.length) % list.length;
+      updateWallpaperDisplay();
+    }
+
+    function randomWallpaper() {
+      const list = getActiveList();
+      currentIndex = Math.floor(Math.random() * list.length);
+      updateWallpaperDisplay();
+      showToast('Loaded random wallpaper');
+    }
+
+    // Toggle Favorite
+    function toggleFavorite() {
+      const list = getActiveList();
+      const current = list[currentIndex];
+      const favKey = current.name;
+      const index = favoritesList.indexOf(favKey);
+
+      if (index === -1) {
+        favoritesList.push(favKey);
+        showToast(`Saved to Favorites: ${current.name}`);
+      } else {
+        favoritesList.splice(index, 1);
+        showToast(`Removed from Favorites: ${current.name}`);
+      }
+      syncFavoriteIcons();
+    }
+
+    function syncFavoriteIcons() {
+      const list = getActiveList();
+      const current = list[currentIndex];
+      const isFav = current && favoritesList.includes(current.name);
+
+      // C1 Icons
+      const c1Heart = document.getElementById('c1-heart-btn');
+      const c1NavFav = document.getElementById('c1-fav-icon');
+      if (c1Heart) {
+        c1Heart.className = isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+        c1Heart.style.color = isFav ? '#ff334b' : '';
+      }
+      if (c1NavFav) c1NavFav.className = isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+
+      // C2 Icons
+      const c2Fav = document.getElementById('c2-fav-icon');
+      if (c2Fav) {
+        c2Fav.className = isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+        c2Fav.style.color = isFav ? '#ff334b' : '';
+      }
+
+      // C3 Icons
+      const c3Fav = document.getElementById('c3-fav-icon');
+      if (c3Fav) {
+        c3Fav.className = isFav ? 'fa-solid fa-star' : 'fa-regular fa-star';
+        c3Fav.style.color = isFav ? '#00f2fe' : '';
+      }
+
+      // C4 Icons
+      const c4Fav = document.getElementById('c4-fav-icon');
+      if (c4Fav) {
+        c4Fav.className = isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+        c4Fav.classList.toggle('active-heart', isFav);
+      }
+    }
+
+    // Update Display Content
+    function updateWallpaperDisplay() {
+      const list = getActiveList();
+      if (!list.length) return;
+      if (currentIndex >= list.length) currentIndex = 0;
+      const car = list[currentIndex];
+
+      // Update background images for all 4 concept views
+      ['c1-bg', 'c2-bg', 'c3-bg', 'c4-bg'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.style.backgroundImage = `url('${car.url}')`;
+          el.style.backgroundSize = isCoverMode ? 'cover' : 'contain';
+          el.style.backgroundRepeat = 'no-repeat';
+        }
+      });
+
+      // Update Concept 1 details
+      document.getElementById('c1-cat-tag').innerText = car.category || currentCategory;
+      document.getElementById('c1-car-name').innerText = car.name;
+
+      // Update Concept 2 details
+      document.getElementById('c2-badge-idx').innerText = `NO. 0${currentIndex + 1} / ${car.category.toUpperCase()}`;
+      document.getElementById('c2-car-heading').innerText = car.name;
+
+      // Update Concept 3 details
+      document.getElementById('c3-hud-cat').innerText = `${car.category.toUpperCase()} // TELEMETRY ACTIVE`;
+      document.getElementById('c3-hud-name').innerText = car.name;
+      document.getElementById('c3-hp-val').innerText = car.hp || '600 HP';
+      document.getElementById('c3-acc-val').innerText = car.acc || '3.2 SEC';
+      document.getElementById('c3-drive-val').innerText = car.drive || 'AWD';
+
+      // Update Concept 4 details
+      document.getElementById('c4-camera-meta').innerText = car.camera || '4K HASSELBLAD // 50MM F/1.4';
+      document.getElementById('c4-vehicle-title').innerText = car.name;
+
+      syncFavoriteIcons();
+      highlightActiveThumbnail();
+    }
+
+    // Render Concept 2 mini strip
+    function renderConcept2Strip() {
+      const strip = document.getElementById('c2-gallery-strip');
+      if (!strip) return;
+      strip.innerHTML = '';
+      const list = getActiveList();
+      list.forEach((car, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = `c2-thumb ${idx === currentIndex ? 'active' : ''}`;
+        thumb.onclick = () => {
+          currentIndex = idx;
+          updateWallpaperDisplay();
+        };
+        thumb.innerHTML = `<img src="${car.url}" alt="${car.name}">`;
+        strip.appendChild(thumb);
+      });
+    }
+
+    function highlightActiveThumbnail() {
+      const thumbs = document.querySelectorAll('.c2-thumb');
+      thumbs.forEach((thumb, idx) => {
+        thumb.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    // Live Clock & Date
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('c1-clock');
+      if (clockEl) clockEl.innerText = `${hours}:${mins}`;
+
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      const dateEl = document.getElementById('c1-date');
+      if (dateEl) dateEl.innerText = now.toLocaleDateString('en-US', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Modals
+    function openMatrixModal() {
+      document.getElementById('matrix-modal').classList.add('open');
+    }
+
+    function closeMatrixModal() {
+      document.getElementById('matrix-modal').classList.remove('open');
+    }
+
+    function selectConceptFromMatrix(idx) {
+      closeMatrixModal();
+      switchConcept(idx);
+    }
+
+    function openSettingsModal() {
+      document.getElementById('settings-modal').classList.add('active');
+    }
+
+    function openUploadModal() {
+      document.getElementById('upload-modal').classList.add('active');
+    }
+
+    function openExploreModal() {
+      showToast('Search & Explore wallpapers modal');
+    }
+
+    function closeModals() {
+      document.querySelectorAll('.view-modal').forEach(m => m.classList.remove('active'));
+    }
+
+    function toggleSetting(el) {
+      el.classList.toggle('on');
+      showToast('Setting saved locally');
+    }
+
+    function changeFitMode(val) {
+      isCoverMode = val === 'cover';
+      updateWallpaperDisplay();
+      showToast(`Wallpaper mode: ${val}`);
+    }
+
+    function clearFavoritesPreview() {
+      favoritesList = [];
+      syncFavoriteIcons();
+      showToast('All favorites cleared');
+    }
+
+    function handlePreviewUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const previewBox = document.getElementById('upload-preview-box');
+        const previewImg = document.getElementById('upload-preview-img');
+        const previewName = document.getElementById('upload-preview-name');
+        
+        previewImg.src = evt.target.result;
+        previewName.innerText = file.name;
+        previewBox.style.display = 'flex';
+
+        const targetCat = document.getElementById('upload-category-select').value;
+
+        // Add to active collection dynamically for preview
+        const newCar = {
+          name: file.name.replace(/\.[^/.]+$/, ""),
+          specs: 'Custom User Upload | 4K Offline File',
+          hp: 'Custom Spec',
+          acc: 'Custom',
+          drive: 'Custom Drive',
+          camera: 'OFFLINE INDEXEDDB',
+          url: evt.target.result
+        };
+
+        CAR_COLLECTIONS[targetCat].unshift(newCar);
+        showToast(`Image uploaded to ${targetCat}`);
+        setTimeout(() => {
+          closeModals();
+          setCategory(targetCat);
+        }, 1200);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('preview-toast');
+      const text = document.getElementById('toast-text');
+      if (!toast || !text) return;
+      text.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // Fullscreen Toggle
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    // Keyboard Shortcuts (Arrow Left/Right, Space for random, F for favorite)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextWallpaper();
+      if (e.key === 'ArrowLeft') prevWallpaper();
+      if (e.key === ' ') { e.preventDefault(); randomWallpaper(); }
+      if (e.key.toLowerCase() === 'f') toggleFavorite();
+      if (e.key === 'Escape') {
+        closeModals();
+        closeMatrixModal();
+      }
+    });
+
+    // Initialize
+    updateWallpaperDisplay();
+    renderConcept2Strip();
+  </script>
+</body>
+</html>

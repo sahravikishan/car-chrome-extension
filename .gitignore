@@ -1,0 +1,65 @@
+# ========================================================
+# Apex Cinema - Git Ignore Configuration
+# ========================================================
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Environment Variables & Secret Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.pfx
+*.p12
+
+# Backup Archives & Local Snapshots (Never commit backups to GitHub)
+backups/
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python Caches & Virtual Envs (Used by local helper scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Development Test Artifacts
+test_image_optimizer.js
+*.test.js
+*.spec.js
+
+# IDE & Code Editor Configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Chrome Extension Package Artifacts
+*.crx
+*.zip
+*.xpi

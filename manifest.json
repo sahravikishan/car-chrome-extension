@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Cinematic New Tab - Car Wallpapers & App Dock",
+  "version": "1.0.0",
+  "description": "A premium cinematic automotive New Tab with top horizontal search bar, custom bottom app dock, and 4K car wallpapers.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}

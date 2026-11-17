@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <!-- Google Fonts: Inter & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons (Latest v1.11.3) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Minimal Cinematic Stylesheet -->
+  <link rel="stylesheet" href="css/cinematic.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       1. FULL-VIEWPORT BACKGROUND ENGINE
+       ======================================================== -->
+  <div id="viewport-canvas">
+    <div id="wallpaper-layer-a" class="wallpaper-layer active"></div>
+    <div id="wallpaper-layer-b" class="wallpaper-layer"></div>
+  </div>
+
+  <!-- Subtle Ambient Vignette (Wallpaper remains bright and clear) -->
+  <div class="cinema-vignette"></div>
+
+  <!-- ========================================================
+       2. TOP HORIZONTAL SEARCH BAR (ONLY VISIBLE ELEMENT #1)
+       ======================================================== -->
+  <div id="search-bar-container">
+    <div class="search-bar-glass" id="search-bar-glass">
+      <div class="search-lens-icon">
+        <i class="bi bi-search"></i>
+      </div>
+      <input 
+        type="text" 
+        id="search-text-input" 
+        class="search-text-input" 
+        placeholder="Search Google or enter a URL..." 
+        autocomplete="off" 
+        spellcheck="false"
+      >
+      <div class="search-actions-group">
+        <button class="search-clear-btn" id="search-clear-btn" title="Clear search">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <button class="search-mic-btn" id="search-mic-btn" title="Voice Search">
+          <i class="bi bi-mic"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       3. BOTTOM HORIZONTAL APP DOCK (ONLY VISIBLE ELEMENT #2)
+       ======================================================== -->
+  <div id="dock-container-wrapper">
+    <div class="cinema-app-dock" id="app-shortcuts-dock">
+      <!-- Shortcuts (Gmail, Chat, YouTube, Drive, Calendar, GitHub + Custom) rendered dynamically -->
+      <!-- Final item is Add App (+) -->
+    </div>
+  </div>
+
+  <!-- ========================================================
+       4. DISCREET MENU TRIGGER (NON-PERMANENT HIDDEN ACCESS)
+       ======================================================== -->
+  <button id="btn-open-menu" class="discreet-menu-trigger" title="Menu & Settings">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <!-- ========================================================
+       5. UNIFIED HIDDEN HUB OVERLAY (CATEGORIES, EXPLORE, UPLOADS, FAVORITES, SETTINGS)
+       ======================================================== -->
+  <div id="view-hub-modal" class="cinema-view-overlay">
+    <div class="overlay-header">
+      <div class="overlay-title-group">
+        <h2>Cinematic <span>Hub</span></h2>
+        <p>Manage car categories, wallpapers, uploads, favorites, and settings.</p>
+      </div>
+      <button class="overlay-close-btn" id="btn-close-hub" title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+
+    <!-- Navigation Tabs inside Hub -->
+    <div class="hub-nav-tabs">
+      <button class="hub-tab-btn active" data-tab="categories">
+        <i class="bi bi-grid-3x3-gap-fill"></i> Categories
+      </button>
+      <button class="hub-tab-btn" data-tab="explore">
+        <i class="bi bi-compass"></i> Explore Wallpapers
+      </button>
+      <button class="hub-tab-btn" data-tab="uploads">
+        <i class="bi bi-cloud-arrow-up-fill"></i> My Uploads
+      </button>
+      <button class="hub-tab-btn" data-tab="favorites">
+        <i class="bi bi-heart-fill"></i> Favorites
+      </button>
+      <button class="hub-tab-btn" data-tab="settings">
+        <i class="bi bi-sliders"></i> Settings
+      </button>
+    </div>
+
+    <!-- TAB 1: CATEGORIES -->
+    <div class="hub-tab-panel active" id="tab-panel-categories">
+      <!-- Active Wallpaper Quick Info & Controls -->
+      <div class="hub-wallpaper-quickbar">
+        <div class="hub-car-info">
+          <h4 id="hub-car-title">Mercedes-Maybach S 680</h4>
+          <p id="hub-car-specs">6.0L Biturbo V12 • 621 HP • Luxury Cars</p>
+        </div>
+        <div class="hub-transport-buttons">
+          <button class="btn-hub-action" id="hub-btn-prev"><i class="fa-solid fa-backward-step"></i> Prev</button>
+          <button class="btn-hub-action" id="hub-btn-random"><i class="fa-solid fa-shuffle"></i> Random</button>
+          <button class="btn-hub-action" id="hub-btn-next">Next <i class="fa-solid fa-forward-step"></i></button>
+          <button class="btn-hub-action" id="hub-btn-fav"><i class="fa-regular fa-heart"></i> Favorite</button>
+        </div>
+      </div>
+
+      <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cinema-gold); margin-bottom: 14px;">
+        Select Car Category
+      </h3>
+      <div class="categories-card-grid">
+        <div class="category-select-card active" data-cat="MIX">
+          <div>
+            <div style="font-weight: 700; color: #fff;">MIX</div>
+            <div style="font-size: 11px; color: var(--text-muted);">All 4 Categories Combined</div>
+          </div>
+          <i class="fa-solid fa-circle-check cat-check"></i>
+        </div>
+
+        <div class="category-select-card" data-cat="Luxury Cars">
+          <div>
+            <div style="font-weight: 700; color: #fff;">Luxury Cars</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Maybach S 680, S 580, SL 680, Maserati</div>
+          </div>
+          <i class="fa-solid fa-circle-check cat-check"></i>
+        </div>
+
+        <div class="category-select-card" data-cat="Sports Cars">
+          <div>
+            <div style="font-weight: 700; color: #fff;">Sports Cars</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Porsche 911 Turbo/GTS/T, Ferrari, BMW M4</div>
+          </div>
+          <i class="fa-solid fa-circle-check cat-check"></i>
+        </div>
+
+        <div class="category-select-card" data-cat="Classic Cars">
+          <div>
+            <div style="font-weight: 700; color: #fff;">Classic Cars</div>
+            <div style="font-size: 11px; color: var(--text-muted);">1967 Shelby Mustang GT500</div>
+          </div>
+          <i class="fa-solid fa-circle-check cat-check"></i>
+        </div>
+
+        <div class="category-select-card" data-cat="Off-Road & SUVs">
+          <div>
+            <div style="font-weight: 700; color: #fff;">Off-Road & SUVs</div>
+            <div style="font-size: 11px; color: var(--text-muted);">G-Wagon, Maybach GLS 600, Defender</div>
+          </div>
+          <i class="fa-solid fa-circle-check cat-check"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: EXPLORE WALLPAPERS -->
+    <div class="hub-tab-panel" id="tab-panel-explore">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; gap: 16px; flex-wrap:wrap;">
+        <input type="text" id="explore-search-input" class="form-control" style="max-width: 340px;" placeholder="Search car name or maker...">
+        <div style="display:flex; gap:6px;">
+          <button class="btn-hub-action active-filter" data-filter="MIX">All</button>
+          <button class="btn-hub-action" data-filter="Luxury Cars">Luxury</button>
+          <button class="btn-hub-action" data-filter="Sports Cars">Sports</button>
+          <button class="btn-hub-action" data-filter="Classic Cars">Classics</button>
+          <button class="btn-hub-action" data-filter="Off-Road & SUVs">Off-Road</button>
+        </div>
+      </div>
+      <div class="gallery-grid" id="explore-gallery-grid">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+
+    <!-- TAB 3: MY UPLOADS (CUSTOM WALLPAPERS) -->
+    <div class="hub-tab-panel" id="tab-panel-uploads">
+      <div class="upload-dropzone" id="upload-dropzone">
+        <div class="upload-icon-circle"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <h4 style="font-size: 16px; margin-bottom: 4px; color:#fff;">Drag & Drop Car Photos Here</h4>
+        <p style="font-size: 12px; color: var(--text-secondary);">Supports JPG, JPEG, PNG, WEBP (Stored in IndexedDB)</p>
+        <input type="file" id="file-picker-input" multiple accept="image/jpeg,image/png,image/webp" style="display: none;">
+        
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px; max-width:540px; margin: 16px auto 0; text-align:left;" onclick="event.stopPropagation()">
+          <div class="form-group" style="margin:0;">
+            <label>Title (Optional)</label>
+            <input type="text" id="upload-custom-title" class="form-control" placeholder="Leave blank to use filename">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>Category</label>
+            <select id="upload-category-assign" class="form-control">
+              <option value="Luxury Cars">Luxury Cars</option>
+              <option value="Sports Cars">Sports Cars</option>
+              <option value="Classic Cars">Classic Cars</option>
+              <option value="Off-Road & SUVs">Off-Road & SUVs</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn-cinema-gold" style="margin-top: 16px;" onclick="document.getElementById('file-picker-input').click()">
+          <i class="fa-solid fa-folder-open"></i> Browse Files From PC
+        </button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h4 style="font-size: 15px; font-weight:700;">Uploaded Wallpapers (<span id="user-wallpaper-count">0</span>)</h4>
+        <div style="font-size: 11px; color: var(--text-muted);" id="db-storage-stat">IndexedDB Storage Active</div>
+      </div>
+      <div class="gallery-grid" id="user-gallery-grid"></div>
+    </div>
+
+    <!-- TAB 4: FAVORITES -->
+    <div class="hub-tab-panel" id="tab-panel-favorites">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+        <span style="font-size: 13px; color: var(--text-secondary);" id="fav-counter-badge">0 saved favorites</span>
+        <button class="btn-hub-action" id="btn-clear-all-favs" style="color:var(--cinema-crimson); border-color:rgba(255,51,75,0.4);">
+          <i class="fa-regular fa-trash-can"></i> Clear All Favorites
+        </button>
+      </div>
+      <div class="gallery-grid" id="favorites-gallery-grid"></div>
+    </div>
+
+    <!-- TAB 5: SETTINGS -->
+    <div class="hub-tab-panel" id="tab-panel-settings">
+      <div class="settings-container">
+        <div class="settings-section-title"><i class="fa-solid fa-display"></i> Interface Visibility</div>
+        <div class="settings-card">
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Top Search Bar</h4>
+              <p>Show Google and direct URL navigation bar.</p>
+            </div>
+            <div class="switch-toggle active" id="toggle-show-searchbar"><div class="switch-thumb"></div></div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Bottom App Dock</h4>
+              <p>Show horizontal application launcher.</p>
+            </div>
+            <div class="switch-toggle active" id="toggle-show-appdock"><div class="switch-thumb"></div></div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>App Dock Icon Size</h4>
+              <p>Adjust shortcut icon dimensions.</p>
+            </div>
+            <select id="setting-dock-size" class="form-control" style="width: auto;">
+              <option value="small">Small (44px)</option>
+              <option value="medium">Medium (52px)</option>
+              <option value="large">Large (60px)</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Reset Default App Shortcuts</h4>
+              <p>Restore original shortcuts (Gmail, Chat, YouTube, Drive, Calendar, GitHub).</p>
+            </div>
+            <button class="btn-hub-action" id="btn-reset-shortcuts">Reset Shortcuts</button>
+          </div>
+        </div>
+
+        <div class="settings-section-title"><i class="fa-solid fa-image"></i> Wallpaper Preferences</div>
+        <div class="settings-card">
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Default Category</h4>
+              <p>Category loaded when opening a new tab.</p>
+            </div>
+            <select id="setting-default-cat" class="form-control" style="width: auto;">
+              <option value="MIX">MIX (All 4 Categories)</option>
+              <option value="Luxury Cars">Luxury Cars</option>
+              <option value="Sports Cars">Sports Cars</option>
+              <option value="Classic Cars">Classic Cars</option>
+              <option value="Off-Road & SUVs">Off-Road & SUVs</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Random Wallpaper on Every New Tab</h4>
+              <p>Automatically rotates a fresh car wallpaper on each new tab open.</p>
+            </div>
+            <div class="switch-toggle active" id="toggle-random-tab"><div class="switch-thumb"></div></div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Auto-Rotate Interval</h4>
+              <p>Automatically advances wallpapers in Sequence and Shuffle modes.</p>
+            </div>
+            <select id="setting-rotation-interval" class="form-control" style="width: auto;">
+              <option value="none">Off (Manual / New Tab Only)</option>
+              <option value="10s">Every 10 Seconds</option>
+              <option value="30s">Every 30 Seconds</option>
+              <option value="1m">Every 1 Minute</option>
+              <option value="5m">Every 5 Minutes</option>
+              <option value="15m">Every 15 Minutes</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Auto-Rotate Interval</h4>
+              <p>Automatically advances wallpapers in Sequence and Shuffle modes.</p>
+            </div>
+            <select id="setting-rotation-interval" class="form-control" style="width: auto;">
+              <option value="none">Off (Manual / New Tab Only)</option>
+              <option value="10s">Every 10 Seconds</option>
+              <option value="30s">Every 30 Seconds</option>
+              <option value="1m">Every 1 Minute</option>
+              <option value="5m">Every 5 Minutes</option>
+              <option value="15m">Every 15 Minutes</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Wallpaper Fit Mode</h4>
+              <p>Cover fills the screen; Contain shows complete image aspect.</p>
+            </div>
+            <select id="setting-fit-mode" class="form-control" style="width: auto;">
+              <option value="cover">Cover (Full Screen Fill)</option>
+              <option value="contain">Contain (Full Aspect)</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Transition Animation</h4>
+              <p>Animation style between wallpaper switches.</p>
+            </div>
+            <select id="setting-transition-style" class="form-control" style="width: auto;">
+              <option value="fade">Cinematic Fade</option>
+              <option value="zoom">Kinetic Zoom</option>
+              <option value="slide">Film Slide</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-section-title"><i class="fa-solid fa-sliders"></i> Category Display Modes</div>
+        <div class="settings-card" id="category-display-modes-card">
+          <!-- Dynamically rendered display mode rows for MIX, Luxury, Sports, Classic, Off-Road -->
+        </div>
+
+        <div class="settings-section-title"><i class="fa-solid fa-database"></i> Storage Management</div>
+        <div class="settings-card">
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Purge Custom Wallpapers</h4>
+              <p>Permanently remove user uploaded photos from IndexedDB.</p>
+            </div>
+            <button class="btn-hub-action" id="btn-settings-clear-db" style="color:var(--cinema-crimson);">Purge Uploads</button>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-info">
+              <h4>Reset All Settings to Default</h4>
+              <p>Restore original preferences.</p>
+            </div>
+            <button class="btn-hub-action" id="btn-settings-reset">Reset Defaults</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       6. MODAL: ADD / EDIT APP SHORTCUT
+       ======================================================== -->
+  <div id="view-shortcut-modal" class="cinema-view-overlay">
+    <div class="shortcut-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 18px;">
+        <h3 id="shortcut-modal-title" style="font-size: 18px; font-weight: 700;">
+          <i class="fa-solid fa-plus" style="color:var(--cinema-gold);"></i> Add App Shortcut
+        </h3>
+        <button class="overlay-close-btn" style="width:32px; height:32px; font-size:12px;" id="btn-close-shortcut-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <input type="hidden" id="edit-shortcut-id" value="">
+
+      <div class="form-group">
+        <label>Website or Application Name</label>
+        <input type="text" id="shortcut-name-input" class="form-control" placeholder="e.g. Reddit, Netflix, Spotify">
+      </div>
+
+      <div class="form-group">
+        <label>Website URL</label>
+        <input type="text" id="shortcut-url-input" class="form-control" placeholder="e.g. https://reddit.com">
+      </div>
+
+      <div class="shortcut-favicon-preview">
+        <div class="preview-icon-box">
+          <img id="shortcut-preview-img" class="preview-icon-img" src="https://www.google.com/s2/favicons?domain=google.com&sz=128" alt="Favicon">
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight:600; color:#fff;" id="shortcut-preview-name">Favicon Preview</div>
+          <div style="font-size: 11px; color: var(--text-muted);">Automatically fetched from domain</div>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn-cinema-secondary" id="btn-delete-shortcut" style="display:none; color:var(--cinema-crimson); border-color:rgba(255,51,75,0.4);">
+          <i class="fa-regular fa-trash-can"></i> Delete
+        </button>
+        <button type="button" class="btn-cinema-secondary" id="btn-cancel-shortcut">Cancel</button>
+        <button type="button" class="btn-cinema-gold" id="btn-save-shortcut">Save Shortcut</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="cinema-toast">
+    <i class="fa-solid fa-circle-check" style="color: var(--cinema-gold);" id="toast-icon"></i>
+    <span id="toast-msg">Apex Cinema Ready</span>
+  </div>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/wallpaperService.js"></script>
+  <script src="js/wallpapers.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/imageOptimizer.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
