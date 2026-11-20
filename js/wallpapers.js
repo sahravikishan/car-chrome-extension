@@ -303,6 +303,28 @@ const INITIAL_WALLPAPERS = [
     meta: '6.75L Twin-Turbo V12 • 592 HP • Dark Luxury Cruiser',
     camera: 'ARRI ALEXA MINI LF // 40MM ANAMORPHIC',
     isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-13',
+    name: 'Chevrolet Corvette C8 Stingray',
+    category: 'Videos',
+    src: 'assets/videos/cevorolate.mp4',
+    thumb: 'assets/videos/cevorolate_thumb.jpg',
+    isVideo: true,
+    meta: '6.2L LT2 V8 • 495 HP • Mid-Engine American Supercar',
+    camera: 'SONY FX6 // 50MM T1.5 CINE',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-14',
+    name: 'Porsche Mission S Hypercar Concept',
+    category: 'Videos',
+    src: 'assets/videos/porsche_mission_s.mp4',
+    thumb: 'assets/videos/porsche_mission_s_thumb.jpg',
+    isVideo: true,
+    meta: 'Mid-Engine Architecture • Floating Volumes Design • Vision Model',
+    camera: 'ARRI ALEXA MINI LF // 35MM ANAMORPHIC',
+    isBuiltin: true
   }
 ];
 
