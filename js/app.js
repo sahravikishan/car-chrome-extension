@@ -1955,8 +1955,8 @@
     const deletedIds = await window.storageManager.getDeletedWallpaperIds();
     state.deletedWallpaperIds = new Set(deletedIds || []);
 
-    // Explicitly purge removed builtins (Mercedes 300SL, Dodge Charger, Maserati Quattroporte, Mercedes-Maybach GLS 600, Mercedes-AMG G63 4K)
-    for (const pId of ['builtin-classic-2', 'builtin-classic-3', 'builtin-lux-6', 'builtin-offroad-gls600-v2', 'builtin-offroad-4']) {
+    // Explicitly purge removed builtins (Mercedes 300SL, Dodge Charger, Maserati Quattroporte, Mercedes-Maybach GLS 600, Mercedes-AMG G63, Mercedes-Maybach S680, Lamborghini Aventador SVJ, Nissan GT-R R35)
+    for (const pId of ['builtin-classic-2', 'builtin-classic-3', 'builtin-lux-6', 'builtin-offroad-gls600-v2', 'builtin-offroad-4', 'builtin-offroad-1', 'builtin-offroad-2', 'builtin-lux-1', 'builtin-lux-2', 'builtin-vid-2', 'builtin-vid-7', 'builtin-vid-8', 'builtin-vid-11']) {
       if (!state.deletedWallpaperIds.has(pId)) {
         await window.storageManager.markWallpaperDeleted(pId);
         state.deletedWallpaperIds.add(pId);
@@ -1969,7 +1969,7 @@
     }
 
     // Auto cache-buster & migration on wallpaper library update (forces fresh disk asset reload)
-    const CURRENT_CACHE_VERSION = 'v3.1.0-purge-two-cars';
+    const CURRENT_CACHE_VERSION = 'v3.2.0-purge-requested-items';
     if (state.settings.cacheVersion !== CURRENT_CACHE_VERSION) {
       if (window.wallpaperDB) {
         try {

@@ -10,26 +10,6 @@ const INITIAL_WALLPAPERS = [
   // 1. LUXURY CARS
   // ==========================================
   {
-    id: 'builtin-lux-1',
-    name: 'Mercedes-Maybach S 680',
-    category: 'Luxury Cars',
-    src: 'assets/wallpapers/luxury/mercedes-maybach-s680.png',
-    mixSrc: 'assets/wallpapers/mixup/mercedes-maybach-s680.png',
-    meta: '6.0L Biturbo V12 • 621 HP • Executive First-Class Suite',
-    camera: 'LEICA SL2 // 50MM F/1.4',
-    isBuiltin: true
-  },
-  {
-    id: 'builtin-lux-2',
-    name: 'Mercedes-Maybach S 680 Interior',
-    category: 'Luxury Cars',
-    src: 'assets/wallpapers/luxury/mercedes-maybach-s680-interior.png',
-    mixSrc: 'assets/wallpapers/mixup/mercedes-maybach-s680-interior.png',
-    meta: 'Exclusive Nappa Leather Lounge • Burmester High-End 4D Sound',
-    camera: 'HASSELBLAD H6D // 28MM F/4.0',
-    isBuiltin: true
-  },
-  {
     id: 'builtin-lux-3',
     name: 'Mercedes-Maybach S 580 4MATIC',
     category: 'Luxury Cars',
@@ -173,30 +153,30 @@ const INITIAL_WALLPAPERS = [
     camera: 'HASSELBLAD X2D 100C // 55MM F/2.5',
     isBuiltin: true
   },
+  {
+    id: 'builtin-sport-porsche-classic-front',
+    name: 'Porsche 911 Sport Classic (Front View)',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/porsche_911_sport_classic_front.jpg',
+    mixSrc: 'assets/wallpapers/mixup/porsche_911_sport_classic_front.jpg',
+    meta: '3.7L Twin-Turbo Flat-6 • 543 HP • Heritage Design Edition',
+    camera: 'LEICA SL2 // 50MM F/1.4 SUMMILUX',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-porsche-classic-profile',
+    name: 'Porsche 911 Sport Classic (Profile View)',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/porsche_911_sport_classic_profile.jpg',
+    mixSrc: 'assets/wallpapers/mixup/porsche_911_sport_classic_profile.jpg',
+    meta: '3.7L Twin-Turbo Flat-6 • 7-Speed Manual • Ducktail Spoiler',
+    camera: 'HASSELBLAD X2D 100C // 80MM F/1.9',
+    isBuiltin: true
+  },
 
   // ==========================================
   // 3. OFF-ROAD & SUVS
   // ==========================================
-  {
-    id: 'builtin-offroad-1',
-    name: 'Mercedes-AMG G 63 G-Wagon',
-    category: 'Off-Road & SUVs',
-    src: 'assets/wallpapers/offroad/moving_g_wagon.jpg',
-    mixSrc: 'assets/wallpapers/mixup/moving_g_wagon.jpg',
-    meta: '4.0L Handcrafted Biturbo V8 • 577 HP • Triple Differential Locks',
-    camera: 'SONY A7S III // 24-70MM F/2.8 GM',
-    isBuiltin: true
-  },
-  {
-    id: 'builtin-offroad-2',
-    name: 'Mercedes-Maybach GLS 600 SUV',
-    category: 'Off-Road & SUVs',
-    src: 'assets/wallpapers/offroad/mercedes-maybach-gls-600.jpg',
-    mixSrc: 'assets/wallpapers/mixup/mercedes-maybach-gls-600.jpg',
-    meta: '4.0L Biturbo V8 • 550 HP • E-Active Body Control',
-    camera: 'LEICA SL2 // 35MM F/2.0 APO',
-    isBuiltin: true
-  },
   {
     id: 'builtin-offroad-3',
     name: 'Land Rover Defender 110 X',
@@ -247,17 +227,6 @@ const INITIAL_WALLPAPERS = [
     isBuiltin: true
   },
   {
-    id: 'builtin-vid-2',
-    name: 'Mercedes-Maybach S 680 Luxury Motion',
-    category: 'Videos',
-    src: 'assets/videos/mercedes_maybach_s680.mp4',
-    thumb: 'assets/videos/mercedes_maybach_s680_thumb.jpg',
-    isVideo: true,
-    meta: '6.0L Biturbo V12 • 621 HP • Ultra-Luxury Motion',
-    camera: 'ARRI ALEXA MINI LF // 50MM ANAMORPHIC',
-    isBuiltin: true
-  },
-  {
     id: 'builtin-vid-3',
     name: 'Ford Mustang GT Drift',
     category: 'Videos',
@@ -277,6 +246,62 @@ const INITIAL_WALLPAPERS = [
     isVideo: true,
     meta: '6.75L Twin-Turbo V12 & Classic Phantom • Stately Elegance',
     camera: 'SONY VENICE 2 // 50MM T1.5 CINE',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-5',
+    name: 'Mercedes-AMG GT Mountain Pass',
+    category: 'Videos',
+    src: 'assets/videos/mercedes_amg_gt.mp4',
+    thumb: 'assets/videos/mercedes_amg_gt_thumb.jpg',
+    isVideo: true,
+    meta: '4.0L Biturbo V8 • 577 HP • Alpine Ridge Canyon Carving',
+    camera: 'ARRI ALEXA 35 // 35MM COOKE S4/i',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-6',
+    name: 'Ferrari F40 Heritage Masterpiece',
+    category: 'Videos',
+    src: 'assets/videos/ferrari_f40_cinematic.mp4',
+    thumb: 'assets/videos/ferrari_f40_cinematic_thumb.jpg',
+    isVideo: true,
+    meta: '2.9L Twin-Turbo V8 • 471 HP • Pure Analog Supercar Icon',
+    camera: 'RED V-RAPTOR 8K // 50MM T1.5 CINE',
+    isBuiltin: true
+  },
+
+  {
+    id: 'builtin-vid-9',
+    name: 'Mercedes-Benz 300 SL Gullwing',
+    category: 'Videos',
+    src: 'assets/videos/mercedes_300sl_gullwing.mp4',
+    thumb: 'assets/videos/mercedes_300sl_gullwing_thumb.jpg',
+    isVideo: true,
+    meta: '3.0L Inline-6 • 240 HP • Legendary 1954 Gullwing Doors',
+    camera: 'LEICA CINE 1 // 35MM SUMMILUX',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-10',
+    name: '1969 Ford Mustang Fastback',
+    category: 'Videos',
+    src: 'assets/videos/ford_mustang_1969_fastback.mp4',
+    thumb: 'assets/videos/ford_mustang_1969_fastback_thumb.jpg',
+    isVideo: true,
+    meta: '351 Cleveland V8 • 300 HP • Classic American Muscle',
+    camera: 'PANAVISION DXL2 // 40MM PRIMO 70',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-12',
+    name: 'Rolls-Royce Ghost Black Badge',
+    category: 'Videos',
+    src: 'assets/videos/rolls_royce_ghost_black_badge.mp4',
+    thumb: 'assets/videos/rolls_royce_ghost_black_badge_thumb.jpg',
+    isVideo: true,
+    meta: '6.75L Twin-Turbo V12 • 592 HP • Dark Luxury Cruiser',
+    camera: 'ARRI ALEXA MINI LF // 40MM ANAMORPHIC',
     isBuiltin: true
   }
 ];
