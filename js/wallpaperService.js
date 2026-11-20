@@ -36,7 +36,8 @@
     'Luxury Cars',
     'Sports Cars',
     'Classic Cars',
-    'Off-Road & SUVs'
+    'Off-Road & SUVs',
+    'Videos'
   ]);
 
   const CATEGORY_MIX = 'MIX';
@@ -55,7 +56,9 @@
     'jpeg',
     'png',
     'webp',
-    'jfif'
+    'jfif',
+    'mp4',
+    'webm'
   ]);
 
   class WallpaperService {
@@ -103,6 +106,7 @@
       if (lower.startsWith('sport')) return 'Sports Cars';
       if (lower.startsWith('classic')) return 'Classic Cars';
       if (lower.startsWith('off') || lower.includes('suv')) return 'Off-Road & SUVs';
+      if (lower.startsWith('vid') || lower.includes('video') || lower.includes('motion')) return 'Videos';
 
       return null;
     }
@@ -228,7 +232,9 @@
       // 3. Normalize Paths
       const cleanSrc = config.src.trim().replace(/\\/g, '/');
       const filename = cleanSrc.split('/').pop();
-      const mixSrc = config.mixSrc ? config.mixSrc.trim().replace(/\\/g, '/') : `assets/wallpapers/mixup/${filename}`;
+      const isVideo = config.isVideo === true || cleanSrc.endsWith('.mp4') || cleanSrc.endsWith('.webm');
+      const mixSrc = config.mixSrc ? config.mixSrc.trim().replace(/\\/g, '/') : (isVideo ? cleanSrc : `assets/wallpapers/mixup/${filename}`);
+      const thumb = config.thumb ? config.thumb.trim().replace(/\\/g, '/') : (isVideo ? cleanSrc.replace(/\.(mp4|webm)$/i, '_thumb.jpg') : cleanSrc);
 
       // 4. Construct Final Normalized Wallpaper Record
       const record = {
@@ -237,6 +243,8 @@
         category: normalizedCategory,
         src: cleanSrc,
         mixSrc: mixSrc,
+        thumb: thumb,
+        isVideo: isVideo,
         meta: (config.meta || '').trim(),
         camera: (config.camera || '').trim(),
         description: (config.description || '').trim(),
@@ -338,8 +346,8 @@
     getWallpapersByCategory(category) {
       const normalized = this.normalizeCategory(category);
       if (!normalized || normalized === CATEGORY_MIX) {
-        // MIX is dynamically derived from all individual categories
-        return this.getAllWallpapers();
+        // MIX is dynamically derived from all image categories (videos kept in dedicated category)
+        return this.getAllWallpapers().filter(w => !w.isVideo);
       }
       return this.getAllWallpapers().filter(w => w.category === normalized);
     }
@@ -351,7 +359,7 @@
     getCategoryCounts() {
       const all = this.getAllWallpapers();
       const counts = {
-        [CATEGORY_MIX]: all.length
+        [CATEGORY_MIX]: all.filter(w => !w.isVideo).length
       };
 
       VALID_CATEGORIES.forEach(cat => {

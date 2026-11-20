@@ -56,11 +56,15 @@ const DEFAULT_SETTINGS = {
   dockIconSize: 'medium',   // 'small' | 'medium' | 'large'
   activeCategory: 'MIX',
   lastWallpaperId: null,
+  videoPlaybackMode: 'sequential', // 'sequential' (one after one) | 'loop' (loop current video)
+  videoFitMode: 'cover',          // 'cover' | 'contain'
+  videoClickToPause: true,
   categoryDisplayModes: {
     'Luxury Cars': { mode: 'sequence', selectedWallpaperId: null },
     'Sports Cars': { mode: 'sequence', selectedWallpaperId: null },
     'Classic Cars': { mode: 'sequence', selectedWallpaperId: null },
     'Off-Road & SUVs': { mode: 'sequence', selectedWallpaperId: null },
+    'Videos': { mode: 'sequence', selectedWallpaperId: null },
     'MIX': { mode: 'sequence', selectedWallpaperId: null }
   },
   categoryProgress: {
@@ -68,6 +72,7 @@ const DEFAULT_SETTINGS = {
     'Sports Cars': { sequenceIndex: 0, shuffleHistory: [], lastWallpaperId: null },
     'Classic Cars': { sequenceIndex: 0, shuffleHistory: [], lastWallpaperId: null },
     'Off-Road & SUVs': { sequenceIndex: 0, shuffleHistory: [], lastWallpaperId: null },
+    'Videos': { sequenceIndex: 0, shuffleHistory: [], lastWallpaperId: null },
     'MIX': { sequenceIndex: 0, shuffleHistory: [], lastWallpaperId: null }
   }
 };

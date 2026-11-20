@@ -127,11 +127,12 @@
 
     /**
      * Generates a stable cache key for a given wallpaper and screen tier.
+     * Incorporates asset versioning to ensure freshly updated image files on disk bypass older cached representations.
      */
     getCacheKey(wallpaper) {
       if (!wallpaper) return 'unknown';
       const { tier } = this.getScreenTier();
-      const version = wallpaper.version || (wallpaper.createdAt ? String(wallpaper.createdAt) : 'v1');
+      const version = wallpaper.version || (wallpaper.createdAt ? String(wallpaper.createdAt) : 'v3_fresh');
       return `${wallpaper.id}_${tier}_${version}`;
     }
 
@@ -206,7 +207,7 @@
      * Optimizes a wallpaper image, storing the compressed result in IndexedDB.
      */
     async optimizeWallpaper(wallpaper) {
-      if (!wallpaper) return null;
+      if (!wallpaper || wallpaper.isVideo || (wallpaper.src && (wallpaper.src.endsWith('.mp4') || wallpaper.src.endsWith('.webm')))) return null;
       const cacheKey = this.getCacheKey(wallpaper);
 
       // Check if already in progress to avoid duplicate concurrent conversions
@@ -276,6 +277,14 @@
      */
     async getWallpaperDisplayUrl(wallpaper) {
       if (!wallpaper) return { url: '', isOptimized: false, isPredecoded: false };
+      if (wallpaper.isVideo || (wallpaper.src && (wallpaper.src.endsWith('.mp4') || wallpaper.src.endsWith('.webm')))) {
+        return {
+          url: wallpaper.src,
+          isOptimized: false,
+          isPredecoded: true,
+          isVideo: true
+        };
+      }
       const cacheKey = this.getCacheKey(wallpaper);
 
       // 1. In-Memory LRU Cache Check (fastest: 0ms)

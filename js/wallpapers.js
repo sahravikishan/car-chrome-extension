@@ -207,16 +207,6 @@ const INITIAL_WALLPAPERS = [
     camera: 'CANON R5 // 70-200MM F/2.8L',
     isBuiltin: true
   },
-  {
-    id: 'builtin-offroad-4',
-    name: 'Mercedes-AMG G 63 4K',
-    category: 'Off-Road & SUVs',
-    src: 'assets/wallpapers/offroad/mercedes_g_wagon_4k.jpg',
-    mixSrc: 'assets/wallpapers/mixup/mercedes_g_wagon_4k.jpg',
-    meta: '4.0L V8 Biturbo • 577 HP • Iconic Off-Road Luxury',
-    camera: 'SONY A1 // 24-70MM F/2.8 GM',
-    isBuiltin: true
-  },
 
   // ==========================================
   // 4. CLASSIC CARS
@@ -240,6 +230,54 @@ const INITIAL_WALLPAPERS = [
     meta: '289 CID K-Code HiPo V8 • 306 HP • Wimbledon White & Guardsman Blue',
     camera: 'HASSELBLAD 500C/M // 80MM F/2.8',
     isBuiltin: true
+  },
+
+  // ==========================================
+  // 5. CINEMATIC VIDEOS
+  // ==========================================
+  {
+    id: 'builtin-vid-1',
+    name: 'Ferrari 812 Superfast',
+    category: 'Videos',
+    src: 'assets/videos/ferrari_812_superfast.mp4',
+    thumb: 'assets/videos/ferrari_812_superfast_thumb.jpg',
+    isVideo: true,
+    meta: '6.5L Naturally Aspirated V12 • 789 HP • Cinematic Motion',
+    camera: 'RED V-RAPTOR 8K // 35MM CINEMA PRIME',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-2',
+    name: 'Mercedes-Maybach S 680 Luxury Motion',
+    category: 'Videos',
+    src: 'assets/videos/mercedes_maybach_s680.mp4',
+    thumb: 'assets/videos/mercedes_maybach_s680_thumb.jpg',
+    isVideo: true,
+    meta: '6.0L Biturbo V12 • 621 HP • Ultra-Luxury Motion',
+    camera: 'ARRI ALEXA MINI LF // 50MM ANAMORPHIC',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-3',
+    name: 'Ford Mustang GT Drift',
+    category: 'Videos',
+    src: 'assets/videos/ford_mustang_gt.mp4',
+    thumb: 'assets/videos/ford_mustang_gt_thumb.jpg',
+    isVideo: true,
+    meta: '5.0L Coyote V8 • 480 HP • High-Speed Tire Smoke',
+    camera: 'RED MONSTRO 8K // 24-70MM T2.9',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-vid-4',
+    name: 'Rolls-Royce Heritage Classic & Modern',
+    category: 'Videos',
+    src: 'assets/videos/rolls_royce_heritage.mp4',
+    thumb: 'assets/videos/rolls_royce_heritage_thumb.jpg',
+    isVideo: true,
+    meta: '6.75L Twin-Turbo V12 & Classic Phantom • Stately Elegance',
+    camera: 'SONY VENICE 2 // 50MM T1.5 CINE',
+    isBuiltin: true
   }
 ];
 
@@ -253,7 +291,8 @@ const BUILTIN_CATEGORIES = [
   'Luxury Cars',
   'Sports Cars',
   'Classic Cars',
-  'Off-Road & SUVs'
+  'Off-Road & SUVs',
+  'Videos'
 ];
 
 if (typeof window !== 'undefined') {

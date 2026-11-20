@@ -35,6 +35,7 @@
     DOM.viewportCanvas = document.getElementById('viewport-canvas');
     DOM.layerA = document.getElementById('wallpaper-layer-a');
     DOM.layerB = document.getElementById('wallpaper-layer-b');
+    DOM.videoLayer = document.getElementById('wallpaper-video-layer');
     DOM.searchBarContainer = document.getElementById('search-bar-container');
     DOM.searchBarGlass = document.getElementById('search-bar-glass');
     DOM.searchInput = document.getElementById('search-text-input');
@@ -76,6 +77,8 @@
     // Uploads inside Hub
     DOM.uploadDropzone = document.getElementById('upload-dropzone');
     DOM.filePickerInput = document.getElementById('file-picker-input');
+    DOM.btnBrowseFiles = document.getElementById('btn-browse-files');
+    DOM.uploadMetaContainer = document.getElementById('upload-meta-container');
     DOM.uploadCustomTitle = document.getElementById('upload-custom-title');
     DOM.uploadCategoryAssign = document.getElementById('upload-category-assign');
     DOM.userGalleryGrid = document.getElementById('user-gallery-grid');
@@ -100,6 +103,9 @@
     DOM.btnSettingsReset = document.getElementById('btn-settings-reset');
     DOM.settingRotationInterval = document.getElementById('setting-rotation-interval');
     DOM.categoryDisplayModesCard = document.getElementById('category-display-modes-card');
+    DOM.settingVideoPlaybackMode = document.getElementById('setting-video-playback-mode');
+    DOM.settingVideoFitMode = document.getElementById('setting-video-fit-mode');
+    DOM.settingVideoClickPause = document.getElementById('setting-video-click-pause');
   }
 
   // ==========================================================
@@ -499,7 +505,7 @@
 
   function getWallpapersByCategory(category) {
     if (category === 'MIX') {
-      return getAllAvailableWallpapers();
+      return getAllAvailableWallpapers().filter(w => !w.isVideo);
     }
     const builtins = window.wallpaperService 
       ? window.wallpaperService.getWallpapersByCategory(category) 
@@ -632,8 +638,8 @@
     // Abort if user navigated away while resolving
     if (currentToken !== state.wallpaperLoadToken) return;
 
-    // 2. Pre-decode into GPU memory if not already pre-decoded
-    if (!isPredecoded) {
+    // 2. Pre-decode into GPU memory if not already pre-decoded (images only)
+    if (!isPredecoded && !wallpaper.isVideo) {
       const decodeImg = new Image();
       decodeImg.src = displayUrl;
       if (typeof decodeImg.decode === 'function') {
@@ -659,32 +665,63 @@
     // Abort if user clicked Next / Prev while decoding
     if (currentToken !== state.wallpaperLoadToken) return;
 
-    const outgoing = state.activeLayer === 'a' ? DOM.layerA : DOM.layerB;
-    const incoming = state.activeLayer === 'a' ? DOM.layerB : DOM.layerA;
-    state.activeLayer = state.activeLayer === 'a' ? 'b' : 'a';
+    if (wallpaper.isVideo) {
+      // ----------------------------------------------------
+      // VIDEO WALLPAPER RENDER ENGINE (MUTED ONLY)
+      // ----------------------------------------------------
+      if (DOM.videoLayer) {
+        DOM.videoLayer.muted = true;
+        DOM.videoLayer.volume = 0;
+        DOM.videoLayer.loop = (state.settings.videoPlaybackMode === 'loop');
+        DOM.videoLayer.style.objectFit = state.settings.videoFitMode || 'cover';
+        if (DOM.videoLayer.src !== displayUrl) {
+          DOM.videoLayer.src = displayUrl;
+          DOM.videoLayer.load();
+        }
+        DOM.videoLayer.classList.add('active');
+        DOM.videoLayer.play().catch(e => console.debug('[Video] Autoplay notice:', e.message));
+      }
 
-    const fitMode = state.settings.fitMode || 'cover';
-    const transition = state.settings.transitionEffect || 'fade';
+      // Hide still image layers smoothly
+      DOM.layerA.classList.remove('active', 'incoming');
+      DOM.layerB.classList.remove('active', 'incoming');
+    } else {
+      // ----------------------------------------------------
+      // STILL IMAGE WALLPAPER RENDER ENGINE
+      // ----------------------------------------------------
+      if (DOM.videoLayer) {
+        DOM.videoLayer.pause();
+        DOM.videoLayer.classList.remove('active');
+        DOM.videoLayer.src = '';
+      }
 
-    incoming.style.backgroundImage = `url("${displayUrl}")`;
-    incoming.style.backgroundSize = fitMode;
+      const outgoing = state.activeLayer === 'a' ? DOM.layerA : DOM.layerB;
+      const incoming = state.activeLayer === 'a' ? DOM.layerB : DOM.layerA;
+      state.activeLayer = state.activeLayer === 'a' ? 'b' : 'a';
 
-    incoming.classList.remove('transition-zoom', 'transition-slide');
-    if (animate) {
-      if (transition === 'zoom') incoming.classList.add('transition-zoom');
-      if (transition === 'slide') incoming.classList.add('transition-slide');
+      const fitMode = state.settings.fitMode || 'cover';
+      const transition = state.settings.transitionEffect || 'fade';
+
+      incoming.style.backgroundImage = `url("${displayUrl}")`;
+      incoming.style.backgroundSize = fitMode;
+
+      incoming.classList.remove('transition-zoom', 'transition-slide');
+      if (animate) {
+        if (transition === 'zoom') incoming.classList.add('transition-zoom');
+        if (transition === 'slide') incoming.classList.add('transition-slide');
+      }
+
+      incoming.classList.add('incoming');
+      requestAnimationFrame(() => {
+        if (currentToken !== state.wallpaperLoadToken) return;
+        incoming.classList.add('active');
+        incoming.classList.remove('incoming');
+        outgoing.classList.remove('active');
+        setTimeout(() => {
+          incoming.classList.remove('transition-zoom', 'transition-slide');
+        }, 800);
+      });
     }
-
-    incoming.classList.add('incoming');
-    requestAnimationFrame(() => {
-      if (currentToken !== state.wallpaperLoadToken) return;
-      incoming.classList.add('active');
-      incoming.classList.remove('incoming');
-      outgoing.classList.remove('active');
-      setTimeout(() => {
-        incoming.classList.remove('transition-zoom', 'transition-slide');
-      }, 800);
-    });
 
     updateHubQuickBar();
     syncCategoryUI();
@@ -758,6 +795,9 @@
 
     // Single Image Mode remains permanently locked to chosen image (no timer)
     if (mode === 'single') return;
+
+    // Videos category auto-advances on video 'ended' event, not arbitrary fixed timer
+    if (cat === 'Videos') return;
 
     const ms = getIntervalMs(state.settings.rotationInterval || '30s');
     if (ms <= 0) return; // Automatic timer disabled
@@ -893,6 +933,7 @@
 
   function setCategory(categoryName) {
     state.activeCategory = categoryName;
+    state.settings.activeCategory = categoryName;
     loadCategoryWallpaper(categoryName, false);
     syncCategoryUI();
     window.storageManager.saveSettings({ activeCategory: categoryName });
@@ -915,7 +956,8 @@
     'Luxury Cars',
     'Sports Cars',
     'Classic Cars',
-    'Off-Road & SUVs'
+    'Off-Road & SUVs',
+    'Videos'
   ];
 
   const CATEGORY_ICONS = {
@@ -923,7 +965,8 @@
     'Luxury Cars': 'fa-solid fa-crown',
     'Sports Cars': 'fa-solid fa-bolt',
     'Classic Cars': 'fa-solid fa-clock-rotate-left',
-    'Off-Road & SUVs': 'fa-solid fa-mountain'
+    'Off-Road & SUVs': 'fa-solid fa-mountain',
+    'Videos': 'fa-solid fa-film'
   };
 
   function getCategoryModeSettings(cat) {
@@ -1006,7 +1049,7 @@
     if (state.userWallpapers && state.userWallpapers.length) {
       state.userWallpapers.forEach(w => {
         if (counts[w.category] !== undefined) counts[w.category]++;
-        if (counts['MIX'] !== undefined) counts['MIX']++;
+        if (!w.isVideo && counts['MIX'] !== undefined) counts['MIX']++;
       });
     }
 
@@ -1061,6 +1104,8 @@
   // HUB MODAL & TABS MANAGEMENT
   // ==========================================================
   function openHub(tabName = 'categories') {
+    updateHubQuickBar();
+    syncCategoryUI();
     switchHubTab(tabName);
     DOM.viewHubModal.classList.add('open');
   }
@@ -1079,7 +1124,10 @@
       panel.classList.toggle('active', panel.id === `tab-panel-${tabName}`);
     });
 
-    if (tabName === 'explore') {
+    if (tabName === 'categories') {
+      updateHubQuickBar();
+      syncCategoryUI();
+    } else if (tabName === 'explore') {
       renderExploreView();
     } else if (tabName === 'uploads') {
       renderMyWallpapersView();
@@ -1102,7 +1150,7 @@
     const filterCat = state.exploreFilterCat || 'MIX';
 
     const filtered = all.filter(item => {
-      const matchesCat = filterCat === 'MIX' || item.category === filterCat;
+      const matchesCat = filterCat === 'MIX' ? !item.isVideo : item.category === filterCat;
       const matchesSearch = !query || 
         item.name.toLowerCase().includes(query) || 
         (item.meta && item.meta.toLowerCase().includes(query)) ||
@@ -1327,6 +1375,16 @@
       DOM.settingRotationInterval.value = s.rotationInterval || '30s';
     }
 
+    if (DOM.settingVideoPlaybackMode) {
+      DOM.settingVideoPlaybackMode.value = s.videoPlaybackMode || 'sequential';
+    }
+    if (DOM.settingVideoFitMode) {
+      DOM.settingVideoFitMode.value = s.videoFitMode || 'cover';
+    }
+    if (DOM.settingVideoClickPause) {
+      DOM.settingVideoClickPause.classList.toggle('active', s.videoClickToPause !== false);
+    }
+
     DOM.toggleShowSearchBar.classList.toggle('active', s.showSearchBar !== false);
     DOM.toggleShowAppDock.classList.toggle('active', s.showAppDock !== false);
     DOM.toggleRandomTab.classList.toggle('active', !!s.randomOnNewTab);
@@ -1384,7 +1442,7 @@
           <div class="single-thumbnails-grid">
             ${wallpapers.map(w => {
               const isSelected = modeConfig.selectedWallpaperId === w.id || (!modeConfig.selectedWallpaperId && wallpapers[0].id === w.id);
-              const imgUrl = w.src || w.dataUrl || w.fallback;
+              const imgUrl = w.isVideo ? (w.thumb || w.src.replace(/\.(mp4|webm)$/i, '_thumb.jpg')) : (w.src || w.dataUrl || w.fallback);
               return `
                 <div class="single-thumb-item ${isSelected ? 'active' : ''}" data-cat="${cat}" data-id="${w.id}">
                   <div class="single-thumb-img-wrap">
@@ -1479,10 +1537,12 @@
     const card = document.createElement('div');
     card.className = 'wallpaper-card';
 
-    const bgUrl = item.src || item.dataUrl || item.fallback;
+    const bgUrl = item.isVideo ? (item.thumb || item.src.replace(/\.(mp4|webm)$/i, '_thumb.jpg')) : (item.src || item.dataUrl || item.fallback);
+    const videoBadgeHtml = item.isVideo ? '<span class="gallery-card-badge-video"><i class="bi bi-play-circle-fill"></i> VIDEO</span>' : '';
 
     card.innerHTML = `
       <div class="card-img-wrap">
+        ${videoBadgeHtml}
         <img src="${bgUrl}" alt="${item.name}" loading="lazy">
         <div class="card-tag">${item.category}</div>
         <button class="card-fav-btn" title="Toggle Favorite">
@@ -1559,6 +1619,13 @@
     DOM.btnOpenMenu.addEventListener('click', () => openHub('categories'));
     DOM.btnCloseHub.addEventListener('click', closeHub);
 
+    // Backdrop dismissal: clicking outside closes Hub
+    DOM.viewHubModal.addEventListener('click', (e) => {
+      if (e.target === DOM.viewHubModal) {
+        closeHub();
+      }
+    });
+
     // Hub Tabs
     document.querySelectorAll('.hub-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1571,6 +1638,8 @@
       card.addEventListener('click', () => {
         const cat = card.getAttribute('data-cat');
         setCategory(cat);
+        updateHubQuickBar();
+        syncCategoryUI();
       });
     });
 
@@ -1619,6 +1688,19 @@
       }
     });
 
+    if (DOM.btnBrowseFiles) {
+      DOM.btnBrowseFiles.addEventListener('click', (e) => {
+        e.stopPropagation();
+        DOM.filePickerInput.click();
+      });
+    }
+
+    if (DOM.uploadMetaContainer) {
+      DOM.uploadMetaContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+
     // Clear Favorites
     DOM.btnClearAllFavs.addEventListener('click', async () => {
       if (confirm('Clear all saved favorites?')) {
@@ -1664,9 +1746,12 @@
     });
 
     DOM.settingDefaultCat.addEventListener('change', async (e) => {
-      await window.storageManager.saveSettings({ defaultCategory: e.target.value });
-      state.settings.defaultCategory = e.target.value;
-      showToast('Default category saved');
+      const newCat = e.target.value;
+      await window.storageManager.saveSettings({ defaultCategory: newCat, activeCategory: newCat });
+      state.settings.defaultCategory = newCat;
+      state.settings.activeCategory = newCat;
+      setCategory(newCat);
+      showToast(`Default category saved: ${newCat}`);
     });
 
     DOM.settingFitMode.addEventListener('change', async (e) => {
@@ -1736,6 +1821,61 @@
       }
     });
 
+    // Video Wallpapers Customization Listeners
+    if (DOM.settingVideoPlaybackMode) {
+      DOM.settingVideoPlaybackMode.addEventListener('change', async (e) => {
+        const mode = e.target.value;
+        await window.storageManager.saveSettings({ videoPlaybackMode: mode });
+        state.settings.videoPlaybackMode = mode;
+        if (DOM.videoLayer) {
+          DOM.videoLayer.loop = (mode === 'loop');
+        }
+        showToast(`Video playback: ${mode === 'loop' ? 'Loop Current' : 'Play one after another'}`);
+      });
+    }
+
+    if (DOM.settingVideoFitMode) {
+      DOM.settingVideoFitMode.addEventListener('change', async (e) => {
+        const fit = e.target.value;
+        await window.storageManager.saveSettings({ videoFitMode: fit });
+        state.settings.videoFitMode = fit;
+        if (DOM.videoLayer) {
+          DOM.videoLayer.style.objectFit = fit;
+        }
+        showToast(`Video fit: ${fit}`);
+      });
+    }
+
+    if (DOM.settingVideoClickPause) {
+      DOM.settingVideoClickPause.addEventListener('click', async () => {
+        const active = DOM.settingVideoClickPause.classList.toggle('active');
+        await window.storageManager.saveSettings({ videoClickToPause: active });
+        state.settings.videoClickToPause = active;
+        showToast(`Click to pause: ${active ? 'Enabled' : 'Disabled'}`);
+      });
+    }
+
+    // Video Layer Event Listeners (Auto-Advance Sequentially & Click to Pause)
+    if (DOM.videoLayer) {
+      DOM.videoLayer.addEventListener('ended', () => {
+        if (state.activeCategory === 'Videos' && state.settings.videoPlaybackMode !== 'loop') {
+          nextWallpaper();
+        }
+      });
+
+      DOM.videoLayer.addEventListener('click', () => {
+        if (state.settings.videoClickToPause !== false) {
+          if (DOM.videoLayer.paused) {
+            DOM.videoLayer.play().catch(() => {});
+            showToast('Video resumed');
+          } else {
+            DOM.videoLayer.pause();
+            showToast('Video paused');
+          }
+        }
+      });
+    }
+
     // Keyboard Shortcuts (Arrow Left/Right, Space, F, Esc, "/")
     window.addEventListener('keydown', (e) => {
       const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
@@ -1791,6 +1931,9 @@
       DOM.layerA.style.backgroundSize = s.fitMode;
       DOM.layerB.style.backgroundSize = s.fitMode;
     }
+    if (DOM.videoLayer && s.videoFitMode) {
+      DOM.videoLayer.style.objectFit = s.videoFitMode;
+    }
     if (DOM.searchBarContainer) {
       DOM.searchBarContainer.style.display = s.showSearchBar === false ? 'none' : 'block';
     }
@@ -1812,8 +1955,8 @@
     const deletedIds = await window.storageManager.getDeletedWallpaperIds();
     state.deletedWallpaperIds = new Set(deletedIds || []);
 
-    // Explicitly purge removed builtins (Mercedes 300SL, Dodge Charger, Maserati Quattroporte)
-    for (const pId of ['builtin-classic-2', 'builtin-classic-3', 'builtin-lux-6']) {
+    // Explicitly purge removed builtins (Mercedes 300SL, Dodge Charger, Maserati Quattroporte, Mercedes-Maybach GLS 600, Mercedes-AMG G63 4K)
+    for (const pId of ['builtin-classic-2', 'builtin-classic-3', 'builtin-lux-6', 'builtin-offroad-gls600-v2', 'builtin-offroad-4']) {
       if (!state.deletedWallpaperIds.has(pId)) {
         await window.storageManager.markWallpaperDeleted(pId);
         state.deletedWallpaperIds.add(pId);
@@ -1825,8 +1968,8 @@
       }
     }
 
-    // Auto cache-buster & migration on wallpaper library update
-    const CURRENT_CACHE_VERSION = 'v2.4.0';
+    // Auto cache-buster & migration on wallpaper library update (forces fresh disk asset reload)
+    const CURRENT_CACHE_VERSION = 'v3.1.0-purge-two-cars';
     if (state.settings.cacheVersion !== CURRENT_CACHE_VERSION) {
       if (window.wallpaperDB) {
         try {
@@ -1860,7 +2003,7 @@
       state.userWallpapers = [];
     }
 
-    state.activeCategory = state.settings.defaultCategory || 'MIX';
+    state.activeCategory = state.settings.activeCategory || state.settings.defaultCategory || 'MIX';
     refreshCurrentList();
 
     // Subscribe to dynamic central registry updates
