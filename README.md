@@ -1,281 +1,198 @@
 <p align="center">
-  <img src="assets/icons/logo.png" width="110" alt="Apex Cinema Logo">
+  <img src="assets/icons/logo.png" width="130" alt="Apex Cinema Logo" style="filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.45));">
 </p>
 
-# Cinematic New Tab - Car Wallpapers & App Dock
+<h1 align="center">🏎️ Apex Cinema — Cinematic New Tab</h1>
 
-> A modern, high-performance automotive New Tab Chrome Extension featuring curated high-resolution car wallpapers, ambient widescreen video backgrounds, a transparent search bar, customizable app shortcut dock, and client-side image acceleration.
-
----
-
-## 1. Project Title
-
-**Cinematic New Tab - Car Wallpapers & App Dock**  
-*(Google Chrome Extension — Manifest V3)*
-
----
-
-## 2. About the Project
-
-Standard browser new tab pages are often cluttered with distracting news feeds, sponsored links, and heavy widgets. **Cinematic New Tab** replaces that clutter with a clean, high-performance automotive experience. 
-
-It provides an aesthetic, distraction-free dashboard centered on iconic sports cars, luxury grand tourers, classic muscle cars, rugged off-road vehicles, and ambient cinematic video motion, while retaining quick daily utility with a transparent search bar and application launcher.
-
----
-
-## 3. What Does This Extension Do?
-
-When you open a new tab in Google Chrome, the extension replaces the default blank or news-heavy tab with:
-- **Cinematic Photography & Videos:** Displays curated high-res automotive photography and smooth 16:9 ambient video backgrounds that fit your screen cleanly.
-- **Fast Google Search:** Provides an unobtrusive, transparent search bar that supports Google queries, direct website URLs, and voice input.
-- **Custom App Launcher Dock:** Keeps your favorite websites within a single click at the bottom of the screen with official brand icons.
-- **Zero Distractions:** Only the car wallpaper or video, search bar, and dock are visible on the main screen. Settings, display modes, and galleries are housed inside a slide-over hub.
-- **Category Persistence:** Automatically remembers your active category (including Videos) across tab reloads and browser restarts.
-
----
-
-## 4. Key Features
-
-### Curated Automotive Wallpapers & Motion Backgrounds
-- Curated high-resolution car media organized across distinct, strictly separated categories:
-  - **Luxury Cars:** Mercedes-Maybach S 580 4MATIC, Mercedes-Maybach SL 680 Monogram, and Maserati GranTurismo Trofeo.
-  - **Sports Cars:** Porsche 911 Turbo S, Carrera GTS, Carrera T, Porsche 911 GT3 Alpine Snow, Porsche 911 Sport Classic (Front & Profile Views), Ferrari F8 Tributo, Portofino M, Ferrari SF90 Stradale, Audi R8 V10 Performance, Mercedes-Benz SLS AMG Gullwing, BMW M4 Convertible, and BMW M4 Competition G82 Green.
-  - **Classic Cars:** 1967 Shelby Mustang GT500 and 1965 Shelby Mustang GT350.
-  - **Off-Road & SUVs:** Land Rover Defender 110 X.
-  - **Cinematic Videos (Dedicated Category):** 100% widescreen 16:9 ambient motion backgrounds with audio stripped for silent, non-intrusive tab viewing:
-    - *Ferrari 812 Superfast*
-    - *Ford Mustang GT Drift*
-    - *Rolls-Royce Heritage Classic & Modern*
-    - *Mercedes-AMG GT Mountain Pass*
-    - *Ferrari F40 Heritage Masterpiece*
-    - *Mercedes-Benz 300 SL Gullwing*
-    - *1969 Ford Mustang Fastback*
-    - *Rolls-Royce Ghost Black Badge*
-    - *Chevrolet Corvette C8 Stingray*
-    - *Porsche Mission S Hypercar Concept*
-  - **MIX Category:** Automatically aggregates all still photo categories into one continuous rotation. Videos are strictly isolated in their own category to prevent unintentional still/video mixing.
-
-### Flexible Category Display Modes
-Each category has its own independent display mode:
-- **Sequence Mode (Default):** Cycles wallpapers in consistent order and loops smoothly from the beginning.
-- **Shuffle Mode:** Randomizes the display sequence without repeating recent images during a cycle.
-- **Single Image / Video Mode:** Locks the display to a specific car wallpaper or ambient video chosen from an interactive thumbnail selector.
-- **Configurable Auto-Rotation:** Set wallpaper rotation to 10 seconds, 30 seconds, 1 minute, 5 minutes, 15 minutes, or disable timer rotation.
-
-### Client-Side Image Acceleration & Optimization
-- **Zero-Stutter Transitions:** Built-in `ImageOptimizer` uses `HTMLImageElement.decode()` to pre-decode upcoming images into GPU memory before rendering, preventing blank flashes.
-- **WebP Compression:** Large source images are dynamically scaled and compressed into efficient WebP blobs stored in a client-side IndexedDB cache (`optimized_cache`).
-- **Predictive Preloading:** Automatically preloads the upcoming image based on your active mode (Sequence next or Shuffle candidate).
-
-### Safe Deleted Item Handling & Cache Busting
-- Discontinued or purged assets are permanently wiped from disk, registries, IndexedDB caches, and favorites.
-- Automated cache migration cleans obsolete entries on startup so removed cars never reappear.
-
-### Personal Custom Uploads (IndexedDB)
-- Drop or browse personal car photos (`.jpg`, `.jpeg`, `.png`, `.webp`) from your computer.
-- Store custom wallpapers completely offline in local browser `IndexedDB`.
-- Categorize custom uploads into any of the supported categories.
-
-### Wallpaper Favorites
-- Press `F` on your keyboard or click the heart button to bookmark any wallpaper.
-- Dedicated Favorites gallery allows quick viewing and one-click application of saved favorites.
-
-### Desktop-Style App Shortcut Dock
-- Centered floating application dock with 100% transparent backgrounds.
-- Pre-configured with official branding for **Gmail**, **YouTube**, **GitHub**, **X**, and **Instagram**.
-- Add custom shortcuts with automatic domain favicon fetching.
-- Drag-and-drop shortcut reordering.
-- Click to select and delete shortcuts with a single action.
-
-### Transparent Search Bar
-- 100% transparent search bar floating directly over the wallpaper or video.
-- Dual-mode input: Search Google or enter direct web URLs (`github.com`, `localhost:3000`).
-- Press `/` from anywhere on the new tab to instantly focus the search input.
-- Voice search supported via the Web Speech API.
-
----
-
-## 5. Screenshots
-
-### New Tab Homepage (Main Dashboard)
 <p align="center">
-  <img src="docs/screenshots/homepage.png" alt="Apex Cinema Extension Homepage Preview" width="100%">
+  <strong>Ultra-Luxury Automotive Backdrops • Ambient 16:9 Motion • Minimalist App Dock • Transparent Search</strong>
 </p>
 
-*Cinematic New Tab homepage featuring the transparent search bar, floating application dock, and high-resolution automotive backdrop.*
-
-### Cinematic Hub & Category Selector
 <p align="center">
-  <img src="docs/screenshots/hub_categories.png" alt="Cinematic Hub Categories" width="100%">
+  <img src="https://img.shields.io/badge/Google_Chrome-Manifest_V3-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Manifest V3">
+  <img src="https://img.shields.io/badge/Pure_Vanilla-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="Vanilla JavaScript">
+  <img src="https://img.shields.io/badge/Storage-IndexedDB_&_Chrome_Local-D4AF37?style=for-the-badge&logo=sqlite&logoColor=black" alt="IndexedDB">
+  <img src="https://img.shields.io/badge/Privacy-100%25_Offline_Zero_Tracking-00C853?style=for-the-badge&logo=shield&logoColor=white" alt="Privacy">
+  <img src="https://img.shields.io/badge/Performance-60FPS_GPU_Accelerated-FF334B?style=for-the-badge&logo=speedtest&logoColor=white" alt="Performance">
 </p>
-
-*Slide-over Cinematic Hub featuring category switching (Luxury, Sports, Classic, Off-Road, Videos, MIX), display mode toggles, and quick navigation actions.*
-
-### Explore Gallery & Video Backgrounds
-<p align="center">
-  <img src="docs/screenshots/hub_explore_videos.png" alt="Explore Gallery with Video Backgrounds" width="100%">
-</p>
-
-*Explore Gallery showcasing the dedicated Videos category with live 16:9 previews, technical engine specs, and camera metadata.*
-
-### Settings & Configuration Engine
-<p align="center">
-  <img src="docs/screenshots/hub_settings.png" alt="Extension Settings Panel" width="100%">
-</p>
-
-*Settings panel allowing granular control over display modes, rotation intervals, video fit modes, and storage management.*
 
 ---
 
-## 6. Recent Updates & Improvements
+## 🌟 Overview
 
-- **Dedicated Videos Category:** Built a standalone ambient video engine supporting 10 cinematic automotive motion backgrounds.
-- **16:9 Landscape Video Reframing:** Reframed all portrait/vertical videos to standard 16:9 widescreen landscape with smart visual composition.
-- **Audio Stripping (`-an`):** Removed all audio tracks from video assets for silent, non-intrusive ambient background playback in Chrome.
-- **Video Thumbnails:** Extracted crisp, dedicated thumbnail frames (`_thumb.jpg`) for seamless rendering in the Hub and Explore gallery.
-- **Strict Video / MIX Isolation:** Ensured the MIX category strictly serves still wallpapers, completely separating videos into their own category.
-- **Category Persistence:** Resolved state reset bugs so refreshing a tab or opening a new window retains the exact category previously selected.
-- **Purged Outdated Assets:** Permanently cleaned disk files and IndexedDB caches for discontinued models.
-- **Manifest V3 Full CSP Compliance:** Eliminated inline event handlers (`onclick`) across all modals for robust Chrome Web Store compliance.
+**Apex Cinema** transforms Google Chrome's standard new tab into an aesthetic, distraction-free automotive sanctuary. Say goodbye to cluttered news feeds, clickbait widgets, and sponsored cards — enjoy ultra-crisp automotive photography and silent widescreen motion backgrounds every time you open a tab.
+
+<p align="center">
+  <img src="docs/screenshots/homepage.png" alt="Apex Cinema Homepage Dashboard" width="95%" style="border-radius:12px; box-shadow: 0 16px 40px rgba(0,0,0,0.7); border: 1px solid rgba(212,175,55,0.25);">
+</p>
 
 ---
 
-## 7. Technologies Used
+## ✨ Key Highlights & Features
 
-- **HTML5 & Modern CSS3:** Custom responsive layout, CSS Grid, Flexbox, and CSS Transitions.
-- **Pure Vanilla JavaScript (ES6+):** Zero external frontend frameworks or heavy runtime dependencies.
-- **Google Chrome Extensions Manifest V3:** Standard compliant configuration using non-persistent background execution.
-- **Chrome Storage API (`chrome.storage.local`):** Fast local storage for shortcuts, settings, favorites, and state tracking.
-- **IndexedDB API (`ApexCinemaDB`):** Persistent offline storage engine for custom user wallpaper uploads and optimized WebP display caches.
-- **HTML5 Canvas & OffscreenCanvas API:** High-speed client-side image compression and aspect-ratio preservation.
-- **Bootstrap Icons (v1.11.3) & Font Awesome 6:** Vector iconography for navigation tabs, search controls, and dock actions.
-- **Web Speech API:** Browser-native speech recognition for voice search.
+| Feature | Description | Status |
+|---|---|:---:|
+| 🎬 **Cinematic Video Engine** | Native 16:9 widescreen video loops with audio stripped (`-an`) for silent ambient motion. | ✅ Active |
+| 🖼️ **Client-Side Acceleration** | Pre-decodes upcoming wallpapers directly into GPU memory via `ImageOptimizer` with zero flash. | ✅ Active |
+| 🗂️ **Strict Category Isolation** | Photos and Videos are strictly segregated; MIX category exclusively cycles still photos. | ✅ Active |
+| 💾 **Memory & Category Persistence** | Remembers selected category across tab reloads and browser restarts without resetting. | ✅ Active |
+| 🔍 **Transparent Omnibox Search** | Floating transparent search bar with Google queries, direct URL navigation, and speech input. | ✅ Active |
+| 📱 **Desktop-Style App Dock** | Sleek floating launcher with pre-configured icons (**Gmail**, **YouTube**, **GitHub**, **X**, **Instagram**). | ✅ Active |
+| 💖 **One-Touch Bookmarking** | Instant favorite toggle via keyboard hotkey with a dedicated offline Favorites gallery. | ✅ Active |
+| 🛡️ **100% Local & Private** | Zero analytics, zero telemetric logging, zero external dependencies. | ✅ Active |
 
 ---
 
-## 8. Installation Guide
+## 📸 Visual Showcase & Tour
 
-Follow these steps to run the extension locally in Google Chrome:
+<div align="center">
+
+### 🖥️ Main Dashboard
+*Minimalist interface featuring the floating transparent search bar, official brand dock, and high-resolution automotive imagery.*
+<br>
+<img src="docs/screenshots/homepage.png" alt="Apex Cinema Dashboard" width="90%" style="border-radius:10px; border: 1px solid rgba(255,255,255,0.1);">
+
+<br><br>
+
+### 🎛️ Slide-Over Cinematic Hub
+*Switch between Luxury, Sports, Classic, Off-Road, and Videos with independent rotation and display modes.*
+<br>
+<img src="docs/screenshots/hub_categories.png" alt="Cinematic Hub Overlay" width="90%" style="border-radius:10px; border: 1px solid rgba(212,175,55,0.3);">
+
+<br><br>
+
+### 🎞️ Explore Gallery & Ambient Motion
+*Browse high-definition video backgrounds with live preview thumbnails, technical engine specs, and cine camera metadata.*
+<br>
+<img src="docs/screenshots/hub_explore_videos.png" alt="Explore Gallery" width="90%" style="border-radius:10px; border: 1px solid rgba(212,175,55,0.3);">
+
+<br><br>
+
+### ⚙️ Granular Configuration Engine
+*Fine-tune rotation intervals (10s to 15m), wallpaper fit mode, dock icon sizes, and offline database storage.*
+<br>
+<img src="docs/screenshots/hub_settings.png" alt="Settings Panel" width="90%" style="border-radius:10px; border: 1px solid rgba(255,255,255,0.1);">
+
+</div>
+
+---
+
+## 🏎️ Curated Machine Collection
+
+<details open>
+<summary><b>🎬 Cinematic Video Backgrounds (Dedicated Category)</b></summary>
+<br>
+
+All video backgrounds are rendered in 16:9 widescreen landscape with audio tracks permanently stripped for silent, non-intrusive viewing:
+
+- **Ferrari 812 Superfast** — *6.5L Naturally Aspirated V12 • 789 HP*
+- **Ferrari F40 Heritage Masterpiece** — *2.9L Twin-Turbo V8 • 471 HP*
+- **Porsche Mission S Hypercar Concept** — *Vision Model • Floating Volumes Architecture*
+- **Chevrolet Corvette C8 Stingray** — *6.2L LT2 V8 • 495 HP • Mid-Engine American Supercar*
+- **Ford Mustang GT Drift** — *5.0L Coyote V8 • 480 HP • High-Speed Tire Smoke*
+- **1969 Ford Mustang Fastback** — *351 Cleveland V8 • 300 HP • Classic American Muscle*
+- **Rolls-Royce Heritage Classic & Modern** — *6.75L Twin-Turbo V12 & Classic Phantom*
+- **Rolls-Royce Ghost Black Badge** — *6.75L Twin-Turbo V12 • 592 HP • Dark Luxury Cruiser*
+- **Mercedes-AMG GT Mountain Pass** — *4.0L Biturbo V8 • 577 HP • Alpine Ridge Canyon Carving*
+- **Mercedes-Benz 300 SL Gullwing** — *3.0L Inline-6 • 240 HP • Legendary 1954 Gullwing Doors*
+
+</details>
+
+<details>
+<summary><b>🏁 Still Photography Wallpapers</b></summary>
+<br>
+
+- **🏆 Luxury Cars:**
+  - Mercedes-Maybach S 580 4MATIC
+  - Mercedes-Maybach SL 680 Monogram
+  - Maserati GranTurismo Trofeo
+- **🏎️ Sports Cars:**
+  - Porsche 911 Turbo S & Carrera GTS & Carrera T
+  - Porsche 911 GT3 (Alpine Snow Edition)
+  - Porsche 911 Sport Classic (Front View & Profile View)
+  - Ferrari F8 Tributo & Portofino M & SF90 Stradale
+  - Audi R8 V10 Performance
+  - Mercedes-Benz SLS AMG Gullwing
+  - BMW M4 Convertible & BMW M4 Competition G82 Green
+- **🕰️ Classic Cars:**
+  - 1967 Shelby Mustang GT500
+  - 1965 Shelby Mustang GT350
+- **⛰️ Off-Road & SUVs:**
+  - Land Rover Defender 110 X
+- **🔀 MIX Category:**
+  - Dynamically rotates all verified photography without duplicates.
+
+</details>
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Description |
+|:---:|---|
+| <kbd>/</kbd> | Instantly focus the transparent search bar |
+| <kbd>→</kbd> | Advance to next wallpaper or video |
+| <kbd>←</kbd> | Return to previous wallpaper or video |
+| <kbd>Space</kbd> | Pick a random car from the active category |
+| <kbd>F</kbd> | Toggle Favorite on the active wallpaper |
+| <kbd>M</kbd> or <kbd>S</kbd> | Open / Close the slide-over Cinematic Hub |
+| <kbd>Esc</kbd> | Close active modal or blur search |
+
+---
+
+## 🚀 Quick Start / Installation
 
 1. **Clone or Download the Repository:**
    ```bash
    git clone https://github.com/sahravikishan/car-chrome-extension.git
    ```
-   *(Or download and extract the ZIP file to your local computer).*
-
-2. **Open Chrome Extensions Page:**
-   - In Google Chrome, type `chrome://extensions/` in the address bar and press Enter.
-   - Alternatively, open the Chrome menu (`⋮`) → **Extensions** → **Manage Extensions**.
-
-3. **Enable Developer Mode:**
-   - In the top-right corner of the Extensions page, toggle the **Developer mode** switch to **ON**.
-
-4. **Load the Extension:**
-   - Click the **Load unpacked** button in the top-left toolbar.
-   - In the file picker, select the project directory containing `manifest.json`.
-
-5. **Open a New Tab:**
-   - Press `Ctrl + T` (or `Cmd + T` on macOS) to launch your new tab page.
+2. **Open Extensions Page:**
+   - Navigate to `chrome://extensions/` in your Chrome browser.
+3. **Turn On Developer Mode:**
+   - Toggle the **Developer mode** switch in the top-right corner.
+4. **Load Extension:**
+   - Click **Load unpacked** and select the extension directory.
+5. **Open New Tab:**
+   - Press <kbd>Ctrl</kbd> + <kbd>T</kbd> (or <kbd>Cmd</kbd> + <kbd>T</kbd> on macOS) to experience Apex Cinema.
 
 ---
 
-## 9. How to Use
-
-### Basic Navigation & Hotkeys
-| Key | Action |
-|---|---|
-| `/` | Instantly focus the search bar |
-| `→` (Right Arrow) | Advance to the next wallpaper or video |
-| `←` (Left Arrow) | Return to the previous wallpaper or video |
-| `Space` | Show a random wallpaper/video from the active category |
-| `F` | Toggle Favorite on current wallpaper |
-| `M` or `S` | Open or close the Cinematic Hub menu |
-| `Esc` | Close any open modal or blur the search bar |
-
-### Accessing the Hub Modal
-- Click the menu icon (`☰`) in the top-right corner to open the **Cinematic Hub**.
-- From the Hub, you can:
-  - Switch active categories (`Luxury Cars`, `Sports Cars`, `Classic Cars`, `Off-Road & SUVs`, `Videos`, `MIX`).
-  - Explore all registered wallpapers and videos in the gallery.
-  - Upload personal images in the **My Uploads** tab.
-  - View bookmarked images in the **Favorites** tab.
-  - Customize auto-rotation intervals, display modes, wallpaper fit mode, and icon sizes in **Settings**.
-
-### Managing App Shortcuts
-- **Add Shortcut:** Click the `+` button on the dock, enter the website name and URL, and click **Save Shortcut**.
-- **Reorder:** Click and drag any shortcut horizontally along the dock.
-- **Remove Shortcut:** Click any shortcut once to select it, then click the red `×` badge to delete it.
-- **Launch:** Click any shortcut icon to navigate to the website.
-
----
-
-## 10. Project Structure
+## 📂 Architecture & Directory Map
 
 ```text
 ├── manifest.json              # Chrome Extension Manifest V3 configuration
 ├── newtab.html                # Main New Tab document
-├── README.md                  # Project documentation and guide
-├── WALLPAPER_MANAGEMENT.md    # Developer guide for adding & managing wallpapers
-├── .gitignore                 # Files excluded from Git tracking
-├── .env.example               # Template environment configuration (offline project)
+├── README.md                  # Decorated project documentation
 ├── docs/
-│   └── screenshots/           # Extension interface screenshots
-│       ├── homepage.png       # 1080p full New Tab homepage preview
-│       ├── hub_categories.png # Hub overlay with category selection
-│       ├── hub_explore_videos.png # Explore gallery showing video backgrounds
-│       └── hub_settings.png   # Settings panel and display mode controls
+│   └── screenshots/           # 1080p high-resolution UI captures
+│       ├── homepage.png       # Main new tab dashboard
+│       ├── hub_categories.png # Hub overlay with category controls
+│       ├── hub_explore_videos.png # Live video background cards
+│       └── hub_settings.png   # Advanced configuration panel
 ├── css/
-│   └── cinematic.css          # Design system, transparent search bar & dock styles
+│   └── cinematic.css          # Design system & dark cinema aesthetics
 ├── js/
-│   ├── app.js                 # UI controllers, shortcuts, dock, and Hub interactions
-│   ├── db.js                  # IndexedDB database manager for custom uploads & caches
-│   ├── imageOptimizer.js      # Client-side WebP compressor, pre-decoder, and LRU cache
-│   ├── storage.js             # chrome.storage.local wrapper for settings and favorites
-│   ├── wallpapers.js          # Central registry array for verified built-in wallpapers & videos
-│   └── wallpaperService.js    # Reactive service for category management and subscriptions
-├── assets/
-│   ├── icons/                 # Extension toolbar and application brand icons
-│   │   ├── logo.png           # Transparent 24K Golden Apex logo (1024x1024)
-│   │   ├── icon16.png         # Extension toolbar icon (16x16 transparent)
-│   │   ├── icon48.png         # Extension management icon (48x48 transparent)
-│   │   ├── icon128.png        # Chrome Web Store & details icon (128x128 transparent)
-│   │   ├── gmail.svg          # Official Google Workspace Gmail vector
-│   │   ├── youtube.svg        # Official YouTube vector
-│   │   ├── github.svg         # Official GitHub vector
-│   │   ├── x.svg              # Official X vector
-│   │   └── instagram.svg      # Official Instagram vector
-│   ├── videos/                # Ambient 16:9 cinematic video backgrounds
-│   │   ├── *.mp4              # Muted H.264 video loops (Ferrari, Porsche, Mustang, Corvette, etc.)
-│   │   └── *_thumb.jpg        # High-res video preview thumbnails for UI galleries
-│   └── wallpapers/            # High-resolution automotive wallpapers
-│       ├── luxury/            # Luxury car wallpapers
-│       ├── sports/            # Sports car wallpapers
-│       ├── classic/           # Classic car wallpapers
-│       ├── offroad/           # Off-Road & SUV wallpapers
-│       └── mixup/             # Curated mixed copies for rapid rotation
-└── scripts/                   # Developer automation and sync utilities
-    ├── add_wallpaper.py       # Helper script to validate and register new wallpapers
-    ├── image_sync_manager.py  # Image synchronization and deduplication utility
-    └── sync_wallpapers.py     # Script to sync images across category folders
+│   ├── app.js                 # Primary UI controller & event orchestrator
+│   ├── db.js                  # IndexedDB database manager for custom uploads
+│   ├── imageOptimizer.js      # GPU pre-decoder & WebP compression engine
+│   ├── storage.js             # chrome.storage.local persistence wrapper
+│   ├── wallpapers.js          # Built-in wallpaper & video registry
+│   └── wallpaperService.js    # Reactive state & subscription service
+└── assets/
+    ├── icons/                 # Toolbar & application brand SVGs
+    ├── videos/                # Ambient 16:9 video loops (*.mp4 & *_thumb.jpg)
+    └── wallpapers/            # Curated car photography by category
 ```
 
 ---
 
-## 11. Privacy and Data Storage
+## 🔒 Privacy Guarantee
 
-- **100% Local and Offline:** The extension requires no external accounts, servers, or user tracking.
-- **No Analytics or Telemetry:** No personal data, search queries, or browsing history are ever collected, transmitted, or logged.
-- **Browser-Local Storage:**
-  - Shortcuts, category display mode preferences, favorites, and settings are saved locally using Chrome's secure `chrome.storage.local` API.
-  - Personal wallpaper uploads and display caches are saved strictly inside your local browser's `IndexedDB` sandbox.
-- **Network Requests:** The extension makes network requests only when:
-  - You submit a search query (redirects directly to Google Search).
-  - You click an application shortcut or enter a URL in the address/search bar.
-  - You add a custom shortcut without an icon, in which case Google Favicon API is queried to fetch the domain's icon.
-  - Loading web fonts and vector icons (Google Fonts and Bootstrap Icons via CDN).
+- 🛡️ **Zero Tracking:** No telemetry, analytics, cookies, or external servers.
+- 💾 **Local-First Architecture:** Saved settings, shortcuts, favorites, and uploads reside strictly within your machine's `chrome.storage.local` and `IndexedDB` sandbox.
 
 ---
 
-## 12. License
-
-This project is currently distributed for personal use. If you plan to fork, redistribute, or use this code commercially, consider adding an appropriate open-source license (such as the MIT License) to the repository.
+<p align="center">
+  <sub>Engineered with precision for automotive enthusiasts. Crafted for Google Chrome.</sub>
+</p>
