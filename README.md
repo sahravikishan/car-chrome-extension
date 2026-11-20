@@ -2,7 +2,7 @@
   <img src="assets/icons/logo.png" width="130" alt="Apex Cinema Logo" style="filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.45));">
 </p>
 
-<h1 align="center">🏎️ Apex Cinema — Cinematic New Tab</h1>
+<h1 align="center">Apex Cinema — Cinematic New Tab</h1>
 
 <p align="center">
   <strong>Ultra-Luxury Automotive Backdrops • Ambient 16:9 Motion • Minimalist App Dock • Transparent Search</strong>
@@ -18,9 +18,9 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
-**Apex Cinema** transforms Google Chrome's standard new tab into an aesthetic, distraction-free automotive sanctuary. Say goodbye to cluttered news feeds, clickbait widgets, and sponsored cards — enjoy ultra-crisp automotive photography and silent widescreen motion backgrounds every time you open a tab.
+**Apex Cinema** transforms Google Chrome's standard new tab into an aesthetic, distraction-free automotive dashboard. Say goodbye to cluttered news feeds, clickbait widgets, and sponsored cards — enjoy ultra-crisp automotive photography and silent widescreen motion backgrounds every time you open a tab.
 
 <p align="center">
   <img src="docs/screenshots/homepage.png" alt="Apex Cinema Homepage Dashboard" width="95%" style="border-radius:12px; box-shadow: 0 16px 40px rgba(0,0,0,0.7); border: 1px solid rgba(212,175,55,0.25);">
@@ -28,47 +28,47 @@
 
 ---
 
-## ✨ Key Highlights & Features
+## Key Highlights & Features
 
-| Feature | Description | Status |
+| Capability | Technical Description | Status |
 |---|---|:---:|
-| 🎬 **Cinematic Video Engine** | Native 16:9 widescreen video loops with audio stripped (`-an`) for silent ambient motion. | ✅ Active |
-| 🖼️ **Client-Side Acceleration** | Pre-decodes upcoming wallpapers directly into GPU memory via `ImageOptimizer` with zero flash. | ✅ Active |
-| 🗂️ **Strict Category Isolation** | Photos and Videos are strictly segregated; MIX category exclusively cycles still photos. | ✅ Active |
-| 💾 **Memory & Category Persistence** | Remembers selected category across tab reloads and browser restarts without resetting. | ✅ Active |
-| 🔍 **Transparent Omnibox Search** | Floating transparent search bar with Google queries, direct URL navigation, and speech input. | ✅ Active |
-| 📱 **Desktop-Style App Dock** | Sleek floating launcher with pre-configured icons (**Gmail**, **YouTube**, **GitHub**, **X**, **Instagram**). | ✅ Active |
-| 💖 **One-Touch Bookmarking** | Instant favorite toggle via keyboard hotkey with a dedicated offline Favorites gallery. | ✅ Active |
-| 🛡️ **100% Local & Private** | Zero analytics, zero telemetric logging, zero external dependencies. | ✅ Active |
+| **Cinematic Video Engine** | Native 16:9 widescreen video loops with audio stripped (`-an`) for silent ambient motion. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **Client-Side Acceleration** | Pre-decodes upcoming wallpapers directly into GPU memory via `ImageOptimizer` with zero flash. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **Strict Category Isolation** | Photos and Videos are strictly segregated; MIX category exclusively cycles still photos. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **Memory & Category Persistence** | Remembers selected category across tab reloads and browser restarts without resetting. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **Transparent Omnibox Search** | Floating transparent search bar with Google queries, direct URL navigation, and speech input. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **Desktop-Style App Dock** | Sleek floating launcher with pre-configured icons (**Gmail**, **YouTube**, **GitHub**, **X**, **Instagram**). | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **One-Touch Bookmarking** | Instant favorite toggle via keyboard hotkey with a dedicated offline Favorites gallery. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
+| **100% Local & Private** | Zero analytics, zero telemetric logging, zero external dependencies. | <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Active"> |
 
 ---
 
-## 📸 Visual Showcase & Tour
+## Visual Showcase & Interface Tour
 
 <div align="center">
 
-### 🖥️ Main Dashboard
+### Main Dashboard
 *Minimalist interface featuring the floating transparent search bar, official brand dock, and high-resolution automotive imagery.*
 <br>
 <img src="docs/screenshots/homepage.png" alt="Apex Cinema Dashboard" width="90%" style="border-radius:10px; border: 1px solid rgba(255,255,255,0.1);">
 
 <br><br>
 
-### 🎛️ Slide-Over Cinematic Hub
+### Slide-Over Cinematic Hub
 *Switch between Luxury, Sports, Classic, Off-Road, and Videos with independent rotation and display modes.*
 <br>
 <img src="docs/screenshots/hub_categories.png" alt="Cinematic Hub Overlay" width="90%" style="border-radius:10px; border: 1px solid rgba(212,175,55,0.3);">
 
 <br><br>
 
-### 🎞️ Explore Gallery & Ambient Motion
+### Explore Gallery & Ambient Motion
 *Browse high-definition video backgrounds with live preview thumbnails, technical engine specs, and cine camera metadata.*
 <br>
 <img src="docs/screenshots/hub_explore_videos.png" alt="Explore Gallery" width="90%" style="border-radius:10px; border: 1px solid rgba(212,175,55,0.3);">
 
 <br><br>
 
-### ⚙️ Granular Configuration Engine
+### Granular Configuration Engine
 *Fine-tune rotation intervals (10s to 15m), wallpaper fit mode, dock icon sizes, and offline database storage.*
 <br>
 <img src="docs/screenshots/hub_settings.png" alt="Settings Panel" width="90%" style="border-radius:10px; border: 1px solid rgba(255,255,255,0.1);">
@@ -77,10 +77,10 @@
 
 ---
 
-## 🏎️ Curated Machine Collection
+## Curated Machine Collection
 
 <details open>
-<summary><b>🎬 Cinematic Video Backgrounds (Dedicated Category)</b></summary>
+<summary><b>Cinematic Video Backgrounds (Dedicated Category)</b></summary>
 <br>
 
 All video backgrounds are rendered in 16:9 widescreen landscape with audio tracks permanently stripped for silent, non-intrusive viewing:
@@ -99,14 +99,14 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
 </details>
 
 <details>
-<summary><b>🏁 Still Photography Wallpapers</b></summary>
+<summary><b>Still Photography Wallpapers</b></summary>
 <br>
 
-- **🏆 Luxury Cars:**
+- **Luxury Cars:**
   - Mercedes-Maybach S 580 4MATIC
   - Mercedes-Maybach SL 680 Monogram
   - Maserati GranTurismo Trofeo
-- **🏎️ Sports Cars:**
+- **Sports Cars:**
   - Porsche 911 Turbo S & Carrera GTS & Carrera T
   - Porsche 911 GT3 (Alpine Snow Edition)
   - Porsche 911 Sport Classic (Front View & Profile View)
@@ -114,21 +114,21 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
   - Audi R8 V10 Performance
   - Mercedes-Benz SLS AMG Gullwing
   - BMW M4 Convertible & BMW M4 Competition G82 Green
-- **🕰️ Classic Cars:**
+- **Classic Cars:**
   - 1967 Shelby Mustang GT500
   - 1965 Shelby Mustang GT350
-- **⛰️ Off-Road & SUVs:**
+- **Off-Road & SUVs:**
   - Land Rover Defender 110 X
-- **🔀 MIX Category:**
+- **MIX Category:**
   - Dynamically rotates all verified photography without duplicates.
 
 </details>
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## Keyboard Shortcuts
 
-| Shortcut | Description |
+| Shortcut | Action |
 |:---:|---|
 | <kbd>/</kbd> | Instantly focus the transparent search bar |
 | <kbd>→</kbd> | Advance to next wallpaper or video |
@@ -140,7 +140,7 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
 
 ---
 
-## 🚀 Quick Start / Installation
+## Quick Start & Installation
 
 1. **Clone or Download the Repository:**
    ```bash
@@ -157,12 +157,12 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
 
 ---
 
-## 📂 Architecture & Directory Map
+## Architecture & Directory Map
 
 ```text
 ├── manifest.json              # Chrome Extension Manifest V3 configuration
 ├── newtab.html                # Main New Tab document
-├── README.md                  # Decorated project documentation
+├── README.md                  # Project documentation
 ├── docs/
 │   └── screenshots/           # 1080p high-resolution UI captures
 │       ├── homepage.png       # Main new tab dashboard
@@ -186,10 +186,10 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
 
 ---
 
-## 🔒 Privacy Guarantee
+## Privacy & Local Architecture
 
-- 🛡️ **Zero Tracking:** No telemetry, analytics, cookies, or external servers.
-- 💾 **Local-First Architecture:** Saved settings, shortcuts, favorites, and uploads reside strictly within your machine's `chrome.storage.local` and `IndexedDB` sandbox.
+- **Zero Tracking:** No telemetry, analytics, cookies, or external servers.
+- **Local-First Architecture:** Saved settings, shortcuts, favorites, and uploads reside strictly within your machine's `chrome.storage.local` and `IndexedDB` sandbox.
 
 ---
 
