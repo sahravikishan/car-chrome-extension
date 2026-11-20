@@ -244,176 +244,262 @@
       <div class="gallery-grid" id="favorites-gallery-grid"></div>
     </div>
 
-    <!-- TAB 5: SETTINGS -->
+    <!-- TAB 5: SETTINGS (COMMAND CENTER) -->
     <div class="hub-tab-panel" id="tab-panel-settings">
       <div class="settings-container">
-        <div class="settings-section-title"><i class="fa-solid fa-display"></i> Interface Visibility</div>
-        <div class="settings-card">
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Top Search Bar</h4>
-              <p>Show Google and direct URL navigation bar.</p>
-            </div>
-            <div class="switch-toggle active" id="toggle-show-searchbar"><div class="switch-thumb"></div></div>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Bottom App Dock</h4>
-              <p>Show horizontal application launcher.</p>
-            </div>
-            <div class="switch-toggle active" id="toggle-show-appdock"><div class="switch-thumb"></div></div>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>App Dock Icon Size</h4>
-              <p>Adjust shortcut icon dimensions.</p>
-            </div>
-            <select id="setting-dock-size" class="form-control" style="width: auto;">
-              <option value="small">Small (44px)</option>
-              <option value="medium">Medium (52px)</option>
-              <option value="large">Large (60px)</option>
-            </select>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Reset Default App Shortcuts</h4>
-              <p>Restore original shortcuts (Gmail, Chat, YouTube, Drive, Calendar, GitHub).</p>
-            </div>
-            <button class="btn-hub-action" id="btn-reset-shortcuts">Reset Shortcuts</button>
-          </div>
+        <!-- Modern Segmented Sub-Nav Bar -->
+        <div class="settings-subnav-bar">
+          <button class="settings-nav-pill active" data-settings-section="all">
+            <i class="fa-solid fa-layer-group"></i> All Controls
+          </button>
+          <button class="settings-nav-pill" data-settings-section="interface">
+            <i class="fa-solid fa-display"></i> Interface & Dock
+          </button>
+          <button class="settings-nav-pill" data-settings-section="wallpapers">
+            <i class="fa-solid fa-image"></i> Wallpaper Engine
+          </button>
+          <button class="settings-nav-pill" data-settings-section="videos">
+            <i class="bi bi-camera-video-fill"></i> Video Motion
+          </button>
+          <button class="settings-nav-pill" data-settings-section="modes">
+            <i class="fa-solid fa-sliders"></i> Display Modes
+          </button>
+          <button class="settings-nav-pill" data-settings-section="storage">
+            <i class="fa-solid fa-database"></i> Storage & Reset
+          </button>
         </div>
 
-        <div class="settings-section-title"><i class="fa-solid fa-image"></i> Wallpaper Preferences</div>
-        <div class="settings-card">
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Default Category</h4>
-              <p>Category loaded when opening a new tab.</p>
+        <!-- Multi-Column Cockpit Grid -->
+        <div class="settings-dashboard-grid">
+          <!-- CARD 1: INTERFACE & DOCK -->
+          <div class="settings-section-card" data-settings-section="interface">
+            <div class="settings-card-header">
+              <div class="settings-card-icon-badge"><i class="fa-solid fa-display"></i></div>
+              <div>
+                <h3>Interface & Dock</h3>
+                <p>Search bar, floating app launcher & dock dimensions</p>
+              </div>
             </div>
-            <select id="setting-default-cat" class="form-control" style="width: auto;">
-              <option value="MIX">MIX (All Automotive Collections)</option>
-              <option value="Luxury Cars">Luxury Cars</option>
-              <option value="Sports Cars">Sports Cars</option>
-              <option value="Classic Cars">Classic Cars</option>
-              <option value="Off-Road & SUVs">Off-Road & SUVs</option>
-              <option value="Videos">Videos (Cinematic Motion)</option>
-            </select>
+            <div class="settings-card-body">
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Top Search Bar</h4>
+                  <p>Show Google and direct URL navigation bar.</p>
+                </div>
+                <div class="switch-toggle active" id="toggle-show-searchbar"><div class="switch-thumb"></div></div>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Bottom App Dock</h4>
+                  <p>Show horizontal application launcher.</p>
+                </div>
+                <div class="switch-toggle active" id="toggle-show-appdock"><div class="switch-thumb"></div></div>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>App Dock Icon Size</h4>
+                  <p>Adjust shortcut icon dimensions.</p>
+                </div>
+                <select id="setting-dock-size" class="form-control" style="width: auto;">
+                  <option value="small">Small (44px)</option>
+                  <option value="medium">Medium (52px)</option>
+                  <option value="large">Large (60px)</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Reset Default Shortcuts</h4>
+                  <p>Restore original apps (Gmail, Chat, YouTube, GitHub, etc.).</p>
+                </div>
+                <button class="btn-hub-action" id="btn-reset-shortcuts">Reset Shortcuts</button>
+              </div>
+            </div>
           </div>
 
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Random Wallpaper on Every New Tab</h4>
-              <p>Automatically rotates a fresh car wallpaper on each new tab open.</p>
+          <!-- CARD 2: WALLPAPER PREFERENCES -->
+          <div class="settings-section-card" data-settings-section="wallpapers">
+            <div class="settings-card-header">
+              <div class="settings-card-icon-badge"><i class="fa-solid fa-image"></i></div>
+              <div>
+                <h3>Wallpaper Engine</h3>
+                <p>Startup category, rotation interval & transition animations</p>
+              </div>
             </div>
-            <div class="switch-toggle active" id="toggle-random-tab"><div class="switch-thumb"></div></div>
+            <div class="settings-card-body">
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Default Category</h4>
+                  <p>Category loaded when opening a new tab.</p>
+                </div>
+                <select id="setting-default-cat" class="form-control" style="width: auto;">
+                  <option value="MIX">MIX (All Automotive Collections)</option>
+                  <option value="Luxury Cars">Luxury Cars</option>
+                  <option value="Sports Cars">Sports Cars</option>
+                  <option value="Classic Cars">Classic Cars</option>
+                  <option value="Off-Road & SUVs">Off-Road & SUVs</option>
+                  <option value="Videos">Videos (Cinematic Motion)</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Random On New Tab</h4>
+                  <p>Rotates a fresh car wallpaper on every tab open.</p>
+                </div>
+                <div class="switch-toggle active" id="toggle-random-tab"><div class="switch-thumb"></div></div>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Auto-Rotate Interval</h4>
+                  <p>Advances wallpapers in Sequence and Shuffle modes.</p>
+                </div>
+                <select id="setting-rotation-interval" class="form-control" style="width: auto;">
+                  <option value="none">Off (Manual / New Tab Only)</option>
+                  <option value="10s">Every 10 Seconds</option>
+                  <option value="30s">Every 30 Seconds</option>
+                  <option value="1m">Every 1 Minute</option>
+                  <option value="5m">Every 5 Minutes</option>
+                  <option value="15m">Every 15 Minutes</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Wallpaper Fit Mode</h4>
+                  <p>Cover fills screen; Contain preserves full aspect ratio.</p>
+                </div>
+                <select id="setting-fit-mode" class="form-control" style="width: auto;">
+                  <option value="cover">Cover (Full Screen Fill)</option>
+                  <option value="contain">Contain (Full Aspect)</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Transition Animation</h4>
+                  <p>Cinematic animation style between wallpaper switches.</p>
+                </div>
+                <select id="setting-transition-style" class="form-control" style="width: auto;">
+                  <option value="fade">Cinematic Fade</option>
+                  <option value="zoom">Kinetic Zoom</option>
+                  <option value="slide">Film Slide</option>
+                </select>
+              </div>
+            </div>
           </div>
 
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Auto-Rotate Interval</h4>
-              <p>Automatically advances wallpapers in Sequence and Shuffle modes.</p>
+          <!-- CARD 3: VIDEO MOTION CUSTOMIZATION -->
+          <div class="settings-section-card" data-settings-section="videos">
+            <div class="settings-card-header">
+              <div class="settings-card-icon-badge"><i class="bi bi-camera-video-fill"></i></div>
+              <div>
+                <h3>Video Motion</h3>
+                <p>Ambient playback sequence, frame sizing & click actions</p>
+              </div>
             </div>
-            <select id="setting-rotation-interval" class="form-control" style="width: auto;">
-              <option value="none">Off (Manual / New Tab Only)</option>
-              <option value="10s">Every 10 Seconds</option>
-              <option value="30s">Every 30 Seconds</option>
-              <option value="1m">Every 1 Minute</option>
-              <option value="5m">Every 5 Minutes</option>
-              <option value="15m">Every 15 Minutes</option>
-            </select>
+            <div class="settings-card-body">
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Playback Sequence</h4>
+                  <p>Play clips one after another or loop current clip.</p>
+                </div>
+                <select id="setting-video-playback-mode" class="form-control" style="width: auto;">
+                  <option value="sequential">Play One After Another</option>
+                  <option value="loop">Loop Current Clip</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Video Sizing Mode</h4>
+                  <p>How ambient video frames fill your display.</p>
+                </div>
+                <select id="setting-video-fit-mode" class="form-control" style="width: auto;">
+                  <option value="cover">Cover (Full Screen)</option>
+                  <option value="contain">Contain (Original Aspect)</option>
+                </select>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Click to Pause / Resume</h4>
+                  <p>Clicking background pauses or resumes playback.</p>
+                </div>
+                <div class="switch-toggle active" id="setting-video-click-pause"><div class="switch-thumb"></div></div>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Audio Status</h4>
+                  <p>All videos are permanently muted for ambient background display.</p>
+                </div>
+                <span class="badge" style="background: rgba(212, 175, 55, 0.15); color: var(--cinema-gold); border: 1px solid rgba(212, 175, 55, 0.3); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 600;">
+                  <i class="bi bi-volume-mute-fill"></i> Silent Ambient Mode
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Wallpaper Fit Mode</h4>
-              <p>Cover fills the screen; Contain shows complete image aspect.</p>
+          <!-- CARD 4: STORAGE & SYSTEM -->
+          <div class="settings-section-card" data-settings-section="storage">
+            <div class="settings-card-header">
+              <div class="settings-card-icon-badge"><i class="fa-solid fa-database"></i></div>
+              <div>
+                <h3>Storage & System</h3>
+                <p>IndexedDB cache management, uploads & default reset</p>
+              </div>
             </div>
-            <select id="setting-fit-mode" class="form-control" style="width: auto;">
-              <option value="cover">Cover (Full Screen Fill)</option>
-              <option value="contain">Contain (Full Aspect)</option>
-            </select>
+            <div class="settings-card-body">
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Purge Custom Wallpapers</h4>
+                  <p>Permanently remove user uploaded photos from IndexedDB.</p>
+                </div>
+                <button class="btn-hub-action" id="btn-settings-clear-db" style="color:var(--cinema-crimson); border-color: rgba(255,51,75,0.4);">
+                  <i class="fa-regular fa-trash-can"></i> Purge Uploads
+                </button>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Reset All Settings to Default</h4>
+                  <p>Restore original extension preferences and display modes.</p>
+                </div>
+                <button class="btn-hub-action" id="btn-settings-reset">
+                  <i class="fa-solid fa-rotate-left"></i> Reset Defaults
+                </button>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-info">
+                  <h4>Offline Storage Engine</h4>
+                  <p>ApexCinemaDB client-side sandbox.</p>
+                </div>
+                <span class="badge" style="background: rgba(0, 200, 83, 0.12); color: #00c853; border: 1px solid rgba(0, 200, 83, 0.3); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 600;">
+                  <i class="fa-solid fa-shield-halved"></i> 100% Local & Encrypted
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Transition Animation</h4>
-              <p>Animation style between wallpaper switches.</p>
+          <!-- CARD 5: CATEGORY DISPLAY MODES (SPANS FULL WIDTH) -->
+          <div class="settings-section-card settings-card-fullwidth" data-settings-section="modes">
+            <div class="settings-card-header">
+              <div class="settings-card-icon-badge"><i class="fa-solid fa-sliders"></i></div>
+              <div>
+                <h3>Category Display Modes</h3>
+                <p>Configure Sequence, Shuffle, or Single Image lock for each automotive collection</p>
+              </div>
             </div>
-            <select id="setting-transition-style" class="form-control" style="width: auto;">
-              <option value="fade">Cinematic Fade</option>
-              <option value="zoom">Kinetic Zoom</option>
-              <option value="slide">Film Slide</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="settings-section-title"><i class="bi bi-camera-video-fill"></i> Video Wallpapers Customization</div>
-        <div class="settings-card">
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Playback Sequence</h4>
-              <p>Play videos one after another or loop current clip.</p>
+            <div class="settings-card-body">
+              <div id="category-display-modes-card">
+                <!-- Dynamically rendered display mode rows for MIX, Luxury, Sports, Classic, Off-Road, Videos -->
+              </div>
             </div>
-            <select id="setting-video-playback-mode" class="form-control" style="width: auto;">
-              <option value="sequential">Play One After Another (Auto-advance on End)</option>
-              <option value="loop">Loop Current Video Continuously</option>
-            </select>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Audio Control</h4>
-              <p>Audio is strictly disabled for ambient background playback.</p>
-            </div>
-            <span class="badge" style="background: rgba(212, 175, 55, 0.15); color: var(--cinema-gold); border: 1px solid rgba(212, 175, 55, 0.3); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600;">
-              <i class="bi bi-volume-mute-fill"></i> Muted (Video Only)
-            </span>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Video Sizing Mode</h4>
-              <p>How video frames fill your screen.</p>
-            </div>
-            <select id="setting-video-fit-mode" class="form-control" style="width: auto;">
-              <option value="cover">Cover (Fill Screen)</option>
-              <option value="contain">Contain (Full Aspect)</option>
-            </select>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Click to Pause / Resume</h4>
-              <p>Clicking background pauses or resumes active video.</p>
-            </div>
-            <div class="switch-toggle active" id="setting-video-click-pause"><div class="switch-thumb"></div></div>
-          </div>
-        </div>
-
-        <div class="settings-section-title"><i class="fa-solid fa-sliders"></i> Category Display Modes</div>
-        <div class="settings-card" id="category-display-modes-card">
-          <!-- Dynamically rendered display mode rows for MIX, Luxury, Sports, Classic, Off-Road -->
-        </div>
-
-        <div class="settings-section-title"><i class="fa-solid fa-database"></i> Storage Management</div>
-        <div class="settings-card">
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Purge Custom Wallpapers</h4>
-              <p>Permanently remove user uploaded photos from IndexedDB.</p>
-            </div>
-            <button class="btn-hub-action" id="btn-settings-clear-db" style="color:var(--cinema-crimson);">Purge Uploads</button>
-          </div>
-
-          <div class="settings-row">
-            <div class="settings-info">
-              <h4>Reset All Settings to Default</h4>
-              <p>Restore original preferences.</p>
-            </div>
-            <button class="btn-hub-action" id="btn-settings-reset">Reset Defaults</button>
           </div>
         </div>
       </div>

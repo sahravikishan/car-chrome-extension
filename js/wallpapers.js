@@ -104,16 +104,6 @@ const INITIAL_WALLPAPERS = [
     isBuiltin: true
   },
   {
-    id: 'builtin-sport-7',
-    name: 'Audi R8 V10 Performance',
-    category: 'Sports Cars',
-    src: 'assets/wallpapers/sports/audi_r8_v10_red.jpg',
-    mixSrc: 'assets/wallpapers/mixup/audi_r8_v10_red.jpg',
-    meta: '5.2L Naturally Aspirated V10 • 602 HP • Quattro AWD',
-    camera: 'SONY A1 // 70-200MM F/2.8 GM II',
-    isBuiltin: true
-  },
-  {
     id: 'builtin-sport-8',
     name: 'BMW M4 Competition G82 Green',
     category: 'Sports Cars',
@@ -141,16 +131,6 @@ const INITIAL_WALLPAPERS = [
     mixSrc: 'assets/wallpapers/mixup/porsche_911_gt3_snow.jpg',
     meta: '4.0L High-Revving Boxer-6 • 500 HP • Alpine Mountain Pass',
     camera: 'FUJIFILM GFX 100 II // 45MM F/2.8',
-    isBuiltin: true
-  },
-  {
-    id: 'builtin-sport-11',
-    name: 'Ferrari SF90 Stradale',
-    category: 'Sports Cars',
-    src: 'assets/wallpapers/sports/ferrari_sf90_stradale.jpg',
-    mixSrc: 'assets/wallpapers/mixup/ferrari_sf90_stradale.jpg',
-    meta: '4.0L Twin-Turbo V8 PHEV • 986 HP • Rosso Corsa Forest Run',
-    camera: 'HASSELBLAD X2D 100C // 55MM F/2.5',
     isBuiltin: true
   },
   {
@@ -185,6 +165,16 @@ const INITIAL_WALLPAPERS = [
     mixSrc: 'assets/wallpapers/mixup/land-rover-defender.jpg',
     meta: '3.0L Turbocharged i6 MHEV • 395 HP • Terrain Response 2',
     camera: 'CANON R5 // 70-200MM F/2.8L',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-offroad-5',
+    name: 'Mercedes-AMG G 63 Dynamic Motion',
+    category: 'Off-Road & SUVs',
+    src: 'assets/wallpapers/offroad/mercedes_amg_g63_running.jpg',
+    mixSrc: 'assets/wallpapers/mixup/mercedes_amg_g63_running.jpg',
+    meta: '4.0L Handcrafted Biturbo V8 • 577 HP • Highway Action Shot',
+    camera: 'HASSELBLAD H6D // 50MM F/2.8',
     isBuiltin: true
   },
 

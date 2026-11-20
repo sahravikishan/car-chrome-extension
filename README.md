@@ -110,8 +110,7 @@ All video backgrounds are rendered in 16:9 widescreen landscape with audio track
   - Porsche 911 Turbo S & Carrera GTS & Carrera T
   - Porsche 911 GT3 (Alpine Snow Edition)
   - Porsche 911 Sport Classic (Front View & Profile View)
-  - Ferrari F8 Tributo & Portofino M & SF90 Stradale
-  - Audi R8 V10 Performance
+  - Ferrari F8 Tributo & Portofino M
   - Mercedes-Benz SLS AMG Gullwing
   - BMW M4 Convertible & BMW M4 Competition G82 Green
 - **Classic Cars:**
