@@ -1812,12 +1812,32 @@
     const deletedIds = await window.storageManager.getDeletedWallpaperIds();
     state.deletedWallpaperIds = new Set(deletedIds || []);
 
-    // Explicitly purge removed builtins (builtin-classic-2: Mercedes 300SL, builtin-classic-3: Dodge Charger)
-    for (const pId of ['builtin-classic-2', 'builtin-classic-3']) {
+    // Explicitly purge removed builtins (Mercedes 300SL, Dodge Charger, Maserati Quattroporte)
+    for (const pId of ['builtin-classic-2', 'builtin-classic-3', 'builtin-lux-6']) {
       if (!state.deletedWallpaperIds.has(pId)) {
         await window.storageManager.markWallpaperDeleted(pId);
         state.deletedWallpaperIds.add(pId);
       }
+      if (window.wallpaperDB) {
+        try {
+          await window.wallpaperDB.deleteOptimizedByWallpaperId(pId);
+        } catch (e) {}
+      }
+    }
+
+    // Auto cache-buster & migration on wallpaper library update
+    const CURRENT_CACHE_VERSION = 'v2.4.0';
+    if (state.settings.cacheVersion !== CURRENT_CACHE_VERSION) {
+      if (window.wallpaperDB) {
+        try {
+          await window.wallpaperDB.clearOptimizedCache();
+        } catch (e) {}
+      }
+      if (window.imageOptimizer && window.imageOptimizer.memoryCache) {
+        window.imageOptimizer.memoryCache.clear();
+      }
+      state.settings.cacheVersion = CURRENT_CACHE_VERSION;
+      await window.storageManager.saveSettings(state.settings);
     }
 
     // Unregister deleted IDs from active wallpaperService registry

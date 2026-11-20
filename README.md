@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icons/logo.png" width="110" alt="Apex Cinema Logo">
+</p>
+
 # Cinematic New Tab - Car Wallpapers & App Dock
 
 > A modern, high-performance automotive New Tab Chrome Extension featuring curated high-resolution car wallpapers, a transparent search bar, customizable app shortcut dock, and client-side image acceleration.
@@ -13,7 +17,7 @@
 
 ## 2. About the Project
 
-Standard browser new tab pages are often cluttered with distracting news feeds, sponsored links, and heavy widgets. **Cinematic New Tab** was designed to replace that clutter with a clean, high-performance automotive photography experience. 
+Standard browser new tab pages are often cluttered with distracting news feeds, sponsored links, and heavy widgets. **Cinematic New Tab** replaces that clutter with a clean, high-performance automotive photography experience. 
 
 It provides an aesthetic, distraction-free dashboard centered on iconic sports cars, luxury grand tourers, classic muscle cars, and rugged off-road vehicles, while retaining quick daily utility with a transparent search bar and application launcher.
 
@@ -31,48 +35,48 @@ When you open a new tab in Google Chrome, the extension replaces the default bla
 
 ## 4. Key Features
 
-### 🖼️ Curated Automotive Wallpapers
+### Curated Automotive Wallpapers
 - Curated high-resolution car photography across four distinct categories:
-  - **Luxury Cars:** Mercedes-Maybach S 680, S 580, SL 680, and Maserati GranTurismo Trofeo.
-  - **Sports Cars:** Porsche 911 Turbo S, Carrera GTS, Carrera T, Ferrari F8 Tributo, Portofino M, and BMW M4 Competition.
-  - **Classic Cars:** 1967 Shelby Mustang GT500.
+  - **Luxury Cars:** Mercedes-Maybach S 680, S 680 Interior, S 580 4MATIC, SL 680 Monogram, and Maserati GranTurismo Trofeo.
+  - **Sports Cars:** Porsche 911 Turbo S, Carrera GTS, Carrera T, Porsche 911 GT3 Alpine Snow, Ferrari F8 Tributo, Portofino M, Ferrari SF90 Stradale, Audi R8 V10 Performance, Mercedes-Benz SLS AMG Gullwing, BMW M4 Convertible, and BMW M4 Competition G82 Green.
+  - **Classic Cars:** 1967 Shelby Mustang GT500 and 1965 Shelby Mustang GT350.
   - **Off-Road & SUVs:** Mercedes-AMG G 63 G-Wagon, Mercedes-Maybach GLS 600, and Land Rover Defender 110 X.
   - **MIX Category:** Dynamically aggregates all categories into one continuous rotation without file duplication.
 
-### 🔄 Flexible Category Display Modes
+### Flexible Category Display Modes
 Each category has its own independent display mode:
 - **Sequence Mode (Default):** Cycles wallpapers in consistent order and loops smoothly from the beginning.
 - **Shuffle Mode:** Randomizes the display sequence without repeating recent images during a cycle.
 - **Single Image Mode:** Locks the display to a specific car wallpaper chosen from an interactive thumbnail selector.
 - **Configurable Auto-Rotation:** Set wallpaper rotation to 10 seconds, 30 seconds, 1 minute, 5 minutes, 15 minutes, or disable timer rotation.
 
-### ⚡ Client-Side Image Acceleration & Optimization
+### Client-Side Image Acceleration & Optimization
 - **Zero-Stutter Transitions:** Built-in `ImageOptimizer` uses `HTMLImageElement.decode()` to pre-decode upcoming images into GPU memory before rendering, preventing blank flashes.
 - **WebP Compression:** Large source images are dynamically scaled and compressed into efficient WebP blobs stored in a client-side IndexedDB cache (`optimized_cache`).
 - **Predictive Preloading:** Automatically preloads the upcoming image based on your active mode (Sequence next or Shuffle candidate).
 
-### 🗑️ Safe Deleted Image Handling
+### Safe Deleted Image Handling
 - Deleting an image permanently removes it from active categories, galleries, sequence orders, shuffle cycles, and favorites.
 - Safely clears invalid references from saved settings.
 - Backup archives remain isolated offline and are never automatically scanned or used as replacements.
 
-### 💾 Personal Custom Uploads (IndexedDB)
+### Personal Custom Uploads (IndexedDB)
 - Drop or browse personal car photos (`.jpg`, `.jpeg`, `.png`, `.webp`) from your computer.
 - Store custom wallpapers completely offline in local browser `IndexedDB`.
 - Categorize custom uploads into any of the supported categories.
 
-### ❤️ Wallpaper Favorites
+### Wallpaper Favorites
 - Press `F` on your keyboard or click the heart button to bookmark any wallpaper.
 - Dedicated Favorites gallery allows quick viewing and one-click application of saved favorites.
 
-### 🚀 Desktop-Style App Shortcut Dock
+### Desktop-Style App Shortcut Dock
 - Centered floating application dock with 100% transparent backgrounds.
 - Pre-configured with official branding for **Gmail**, **YouTube**, **GitHub**, **X**, and **Instagram**.
 - Add custom shortcuts with automatic domain favicon fetching.
 - Drag-and-drop shortcut reordering.
 - Click to select and delete shortcuts with a single action.
 
-### 🔍 Transparent Search Bar
+### Transparent Search Bar
 - 100% transparent search bar floating directly over the wallpaper.
 - Dual-mode input: Search Google or enter direct web URLs (`github.com`, `localhost:3000`).
 - Press `/` from anywhere on the new tab to instantly focus the search input.
@@ -82,18 +86,11 @@ Each category has its own independent display mode:
 
 ## 5. Screenshots
 
-> *Placeholder: Add real screenshots of your extension after loading it in Google Chrome.*
+<p align="center">
+  <img src="docs/screenshots/homepage.png" alt="Apex Cinema Extension Homepage Preview" width="100%">
+</p>
 
-```markdown
-![Main Homepage View](docs/screenshots/homepage.png)
-*Homepage with transparent search bar, wallpaper, and app shortcut dock.*
-
-![Cinematic Hub Modal](docs/screenshots/hub-modal.png)
-*Cinematic Hub overlay showing category management and display modes.*
-
-![Settings and Display Modes](docs/screenshots/settings.png)
-*Configuring Sequence, Shuffle, and Single Image display modes.*
-```
+*Cinematic New Tab homepage featuring the transparent search bar, floating app dock, and high-resolution automotive backdrop.*
 
 ---
 
@@ -116,7 +113,7 @@ Follow these steps to run the extension locally in Google Chrome:
 
 1. **Clone or Download the Repository:**
    ```bash
-   git clone https://github.com/your-username/cinematic-car-wallpaper-tab.git
+   git clone https://github.com/sahravikishan/car-chrome-extension.git
    ```
    *(Or download and extract the ZIP file to your local computer).*
 
@@ -150,7 +147,7 @@ Follow these steps to run the extension locally in Google Chrome:
 | `Esc` | Close any open modal or blur the search bar |
 
 ### Accessing the Hub Modal
-- Click the discrete menu icon (`☰`) in the top-right corner to open the **Cinematic Hub**.
+- Click the menu icon (`☰`) in the top-right corner to open the **Cinematic Hub**.
 - From the Hub, you can:
   - Switch active categories (`Luxury Cars`, `Sports Cars`, `Classic Cars`, `Off-Road & SUVs`, `MIX`).
   - Explore all registered wallpapers in the gallery.
@@ -175,6 +172,9 @@ Follow these steps to run the extension locally in Google Chrome:
 ├── WALLPAPER_MANAGEMENT.md    # Developer guide for adding & managing wallpapers
 ├── .gitignore                 # Files excluded from Git tracking
 ├── .env.example               # Template environment configuration (offline project)
+├── docs/
+│   └── screenshots/           # Extension interface screenshots
+│       └── homepage.png       # 1080p full New Tab homepage preview
 ├── css/
 │   └── cinematic.css          # Design system, transparent search bar & dock styles
 ├── js/
@@ -186,14 +186,15 @@ Follow these steps to run the extension locally in Google Chrome:
 │   └── wallpaperService.js    # Reactive service for category management and subscriptions
 ├── assets/
 │   ├── icons/                 # Extension toolbar and application brand icons
+│   │   ├── logo.png           # Transparent 24K Golden Apex logo (1024x1024)
+│   │   ├── icon16.png         # Extension toolbar icon (16x16 transparent)
+│   │   ├── icon48.png         # Extension management icon (48x48 transparent)
+│   │   ├── icon128.png        # Chrome Web Store & details icon (128x128 transparent)
 │   │   ├── gmail.svg          # Official Google Workspace Gmail vector
 │   │   ├── youtube.svg        # Official YouTube vector
 │   │   ├── github.svg         # Official GitHub vector
 │   │   ├── x.svg              # Official X vector
-│   │   ├── instagram.svg      # Official Instagram vector
-│   │   ├── icon16.png         # Extension toolbar icon (16x16)
-│   │   ├── icon48.png         # Extension management icon (48x48)
-│   │   └── icon128.png        # Chrome Web Store & details icon (128x128)
+│   │   └── instagram.svg      # Official Instagram vector
 │   └── wallpapers/            # High-resolution automotive wallpapers
 │       ├── luxury/            # Luxury car wallpapers
 │       ├── sports/            # Sports car wallpapers

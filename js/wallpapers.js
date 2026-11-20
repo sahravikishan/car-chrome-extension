@@ -77,8 +77,8 @@ const INITIAL_WALLPAPERS = [
     id: 'builtin-sport-2',
     name: 'Porsche 911 Carrera GTS',
     category: 'Sports Cars',
-    src: 'assets/wallpapers/sports/porsche_911_carrera_gts.png',
-    mixSrc: 'assets/wallpapers/mixup/porsche_911_carrera_gts.png',
+    src: 'assets/wallpapers/sports/porsche_911_carrera_gts.jpg',
+    mixSrc: 'assets/wallpapers/mixup/porsche_911_carrera_gts.jpg',
     meta: '3.6L T-Hybrid Boxer-6 • 532 HP • Sport Chrono Package',
     camera: 'LEICA M11 // 35MM APO-SUMMICRON',
     isBuiltin: true
@@ -87,8 +87,8 @@ const INITIAL_WALLPAPERS = [
     id: 'builtin-sport-3',
     name: 'Porsche 911 Carrera T',
     category: 'Sports Cars',
-    src: 'assets/wallpapers/sports/porsche_911_carrera_t.png',
-    mixSrc: 'assets/wallpapers/mixup/porsche_911_carrera_t.png',
+    src: 'assets/wallpapers/sports/porsche_911_carrera_t.jpg',
+    mixSrc: 'assets/wallpapers/mixup/porsche_911_carrera_t.jpg',
     meta: '3.0L Twin-Turbo Flat-6 • 388 HP • Lightweight 6-Speed Manual',
     camera: 'FUJIFILM GFX 100S // 45MM F/2.8',
     isBuiltin: true
@@ -121,6 +121,56 @@ const INITIAL_WALLPAPERS = [
     mixSrc: 'assets/wallpapers/mixup/bmw_m4.jpg',
     meta: '3.0L M TwinPower Turbo Inline-6 • 503 HP • M xDrive',
     camera: 'NIKON Z9 // 35MM F/1.8 S',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-7',
+    name: 'Audi R8 V10 Performance',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/audi_r8_v10_red.jpg',
+    mixSrc: 'assets/wallpapers/mixup/audi_r8_v10_red.jpg',
+    meta: '5.2L Naturally Aspirated V10 • 602 HP • Quattro AWD',
+    camera: 'SONY A1 // 70-200MM F/2.8 GM II',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-8',
+    name: 'BMW M4 Competition G82 Green',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/bmw_m4_g82_green.jpg',
+    mixSrc: 'assets/wallpapers/mixup/bmw_m4_g82_green.jpg',
+    meta: '3.0L M TwinPower Turbo S58 • 503 HP • Isle of Man Green',
+    camera: 'CANON R5 // 24-70MM F/2.8L',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-9',
+    name: 'Mercedes-Benz SLS AMG Gullwing',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/mercedes_benz_sls_amg.jpg',
+    mixSrc: 'assets/wallpapers/mixup/mercedes_benz_sls_amg.jpg',
+    meta: '6.2L Naturally Aspirated V8 • 563 HP • Iconic Gullwing Doors',
+    camera: 'LEICA M11 // 50MM NOCTILUX',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-10',
+    name: 'Porsche 911 GT3 Alpine Snow',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/porsche_911_gt3_snow.jpg',
+    mixSrc: 'assets/wallpapers/mixup/porsche_911_gt3_snow.jpg',
+    meta: '4.0L High-Revving Boxer-6 • 500 HP • Alpine Mountain Pass',
+    camera: 'FUJIFILM GFX 100 II // 45MM F/2.8',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-sport-11',
+    name: 'Ferrari SF90 Stradale',
+    category: 'Sports Cars',
+    src: 'assets/wallpapers/sports/ferrari_sf90_stradale.jpg',
+    mixSrc: 'assets/wallpapers/mixup/ferrari_sf90_stradale.jpg',
+    meta: '4.0L Twin-Turbo V8 PHEV • 986 HP • Rosso Corsa Forest Run',
+    camera: 'HASSELBLAD X2D 100C // 55MM F/2.5',
     isBuiltin: true
   },
 
@@ -157,6 +207,16 @@ const INITIAL_WALLPAPERS = [
     camera: 'CANON R5 // 70-200MM F/2.8L',
     isBuiltin: true
   },
+  {
+    id: 'builtin-offroad-4',
+    name: 'Mercedes-AMG G 63 4K',
+    category: 'Off-Road & SUVs',
+    src: 'assets/wallpapers/offroad/mercedes_g_wagon_4k.jpg',
+    mixSrc: 'assets/wallpapers/mixup/mercedes_g_wagon_4k.jpg',
+    meta: '4.0L V8 Biturbo • 577 HP • Iconic Off-Road Luxury',
+    camera: 'SONY A1 // 24-70MM F/2.8 GM',
+    isBuiltin: true
+  },
 
   // ==========================================
   // 4. CLASSIC CARS
@@ -169,6 +229,16 @@ const INITIAL_WALLPAPERS = [
     mixSrc: 'assets/wallpapers/mixup/shelby_gt500_1967.jpg',
     meta: '428 Police Interceptor V8 • 355 HP • 4-Speed Toploader',
     camera: 'HASSELBLAD 500C // 80MM PLANAR',
+    isBuiltin: true
+  },
+  {
+    id: 'builtin-classic-gt350',
+    name: '1965 Shelby Mustang GT350',
+    category: 'Classic Cars',
+    src: 'assets/wallpapers/classic/shelby_gt350_classic.jpg',
+    mixSrc: 'assets/wallpapers/mixup/shelby_gt350_classic.jpg',
+    meta: '289 CID K-Code HiPo V8 • 306 HP • Wimbledon White & Guardsman Blue',
+    camera: 'HASSELBLAD 500C/M // 80MM F/2.8',
     isBuiltin: true
   }
 ];
